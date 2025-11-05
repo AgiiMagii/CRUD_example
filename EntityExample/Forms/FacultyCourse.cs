@@ -312,6 +312,7 @@ namespace EntityExample.Forms
                 txtCourseName.Text = selectedCourse.Name;
             }
         }
+        
     }
 }
 

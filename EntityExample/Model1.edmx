@@ -147,6 +147,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="GetStudentsByFaculty" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="faculty" Type="nvarchar" Mode="In" />
+        </Function>
         <EntityContainer Name="UniversityExampleModelStoreContainer">
           <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
@@ -370,7 +373,18 @@
             <End Role="Subject" EntitySet="Subject" />
             <End Role="Lesson" EntitySet="Lesson" />
           </AssociationSet>
+          <FunctionImport Name="GetStudentsByFaculty" ReturnType="Collection(UniversityExampleModel.GetStudentsByFaculty_Result)">
+            <Parameter Name="faculty" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="GetStudentsByFaculty_Result">
+          <Property Type="Int64" Name="ID_student" Nullable="false" />
+          <Property Type="String" Name="Faculty" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Student" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="Gender" Nullable="true" MaxLength="1" />
+          <Property Type="DateTime" Name="BirthYear" Nullable="true" />
+          <Property Type="String" Name="Course" Nullable="true" MaxLength="50" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -454,6 +468,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetStudentsByFaculty" FunctionName="UniversityExampleModel.Store.GetStudentsByFaculty">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UniversityExampleModel.GetStudentsByFaculty_Result">
+                <ScalarProperty Name="ID_student" ColumnName="ID_student" />
+                <ScalarProperty Name="Faculty" ColumnName="Faculty" />
+                <ScalarProperty Name="Student" ColumnName="Student" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="BirthYear" ColumnName="BirthYear" />
+                <ScalarProperty Name="Course" ColumnName="Course" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

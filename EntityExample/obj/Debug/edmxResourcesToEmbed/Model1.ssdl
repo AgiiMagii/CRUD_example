@@ -142,6 +142,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="GetStudentsByFaculty" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="faculty" Type="nvarchar" Mode="In" />
+  </Function>
   <EntityContainer Name="UniversityExampleModelStoreContainer">
     <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />

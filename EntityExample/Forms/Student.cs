@@ -20,6 +20,7 @@ namespace EntityExample.Forms
         private int pageNr = 1;
         private int pageSize = 5;
         private List<StudentView> students = new List<StudentView>();
+        private List<StudentView> filteredStudents = new List<StudentView>();
         private readonly fm_University _universityForm;
         public fm_Student(fm_University universityForm)
         {
@@ -70,11 +71,12 @@ namespace EntityExample.Forms
         }
         private void Paging()
         {
+            List<StudentView> listObject = filteredStudents.Count > 0 ? filteredStudents : students;
             buttPageLeft.Enabled = (pageNr > 1);
-            buttPageRight.Enabled = (students.Count > pageSize * pageNr);
-            labelShowing.Text = students.Count > 0 ? $"{((pageNr - 1) * pageSize + 1)} - {Math.Min(pageNr * pageSize, students.Count)}" : "No entries found";
-            labelNext.Text = (buttPageRight.Enabled) ? $"{Math.Min(pageNr * pageSize + 1, students.Count)} - {Math.Min((pageNr + 1) * pageSize, students.Count)}" : "-";
-            helper.ReloadGrid(grid_Students, helper.Paging(students, pageNr, pageSize));
+            buttPageRight.Enabled = (listObject.Count > pageSize * pageNr);
+            labelShowing.Text = listObject.Count > 0 ? $"{((pageNr - 1) * pageSize + 1)} - {Math.Min(pageNr * pageSize, listObject.Count)}" : "No entries found";
+            labelNext.Text = (buttPageRight.Enabled) ? $"{Math.Min(pageNr * pageSize + 1, listObject.Count)} - {Math.Min((pageNr + 1) * pageSize, listObject.Count)}" : "-";
+            helper.ReloadGrid(grid_Students, helper.Paging(listObject, pageNr, pageSize));
         }
         private void buttPageLeft_Click(object sender, EventArgs e)
         {
@@ -117,7 +119,7 @@ namespace EntityExample.Forms
                     textSSurn.Text = student.Surname;
                     datePickStud.Value = student.BirthYear ?? DateTime.Now;
                     comboStGender.SelectedItem = Enum.Parse(typeof(Enums.Gender), student.Gender);
-                    comboCourse.SelectedValue = student.ID_course;
+                    comboCourse.SelectedValue = student?.ID_course;
                 }
             }
         }
@@ -153,10 +155,25 @@ namespace EntityExample.Forms
         }
         private void LoadFilterCmboCourses()
         {
-            cb_filterByCourse.DataSource = factory.GetCourses();
-            cb_filterByCourse.DisplayMember = "Name";
-            cb_filterByCourse.ValueMember = "ID_course";
-            cb_filterByCourse.SelectedIndex = -1;
+            List<Faculty> faculties = factory.GetFaculties();
+            cb_filterByFaculty.DataSource = faculties;
+            cb_filterByFaculty.DisplayMember = "Name";
+            cb_filterByFaculty.ValueMember = "ID_faculty";
+            cb_filterByFaculty.SelectedIndex = -1;
+        }
+        private void cb_filterByFaculty_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (cb_filterByFaculty.SelectedIndex != -1)
+            {
+                List<GetStudentsByFaculty_Result> selectedFaculty = factory.GetStudentsByFaculty(cb_filterByFaculty.Text);
+                filteredStudents = students.Where(s => selectedFaculty.Any(f => f.ID_student == s.ID_student)).ToList();
+                helper.ReloadGrid(grid_Students, helper.Paging(filteredStudents, pageNr, pageSize));
+            }
+            else
+            {
+                filteredStudents.Clear();
+                helper.ReloadGrid(grid_Students, helper.Paging(students, pageNr, pageSize));
+            }
         }
     }
 }

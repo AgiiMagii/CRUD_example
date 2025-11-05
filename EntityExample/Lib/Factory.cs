@@ -1,7 +1,9 @@
 ﻿using EntityExample.Views;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -58,6 +60,19 @@ namespace EntityExample.Lib
         public List<Course> GetCoursesByFacultyId(long facultyId)
         {
             return repository.GetEntities<Course>().Where(c => c.ID_faculty == facultyId).ToList();
+        }
+        public List<GetStudentsByFaculty_Result> GetStudentsByFaculty (string faculty)
+        {
+            try
+            {
+                SqlParameter facultyParam = new SqlParameter("@Faculty", faculty);
+                return repository.ExecuteStoredProcedure<GetStudentsByFaculty_Result>("GetStudentsByFaculty", facultyParam);
+
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("An error occurred while retrieving students by faculty.", ex);
+            }
         }
         public Student RegStudent(Student student)
         {
@@ -224,6 +239,7 @@ namespace EntityExample.Lib
             repository.DeleteEntity(addressEntity);
             return true;
         }
+
     }
 }
     

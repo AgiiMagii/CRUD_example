@@ -54,7 +54,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.cb_filterByCourse = new System.Windows.Forms.ComboBox();
+            this.cb_filterByFaculty = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grid_Students)).BeginInit();
             this.groupStudentReg.SuspendLayout();
@@ -312,22 +312,23 @@
             this.label8.TabIndex = 21;
             this.label8.Text = "🔍";
             // 
-            // cb_filterByCourse
+            // cb_filterByFaculty
             // 
-            this.cb_filterByCourse.FormattingEnabled = true;
-            this.cb_filterByCourse.Location = new System.Drawing.Point(446, 11);
-            this.cb_filterByCourse.Name = "cb_filterByCourse";
-            this.cb_filterByCourse.Size = new System.Drawing.Size(132, 21);
-            this.cb_filterByCourse.TabIndex = 22;
+            this.cb_filterByFaculty.FormattingEnabled = true;
+            this.cb_filterByFaculty.Location = new System.Drawing.Point(446, 11);
+            this.cb_filterByFaculty.Name = "cb_filterByFaculty";
+            this.cb_filterByFaculty.Size = new System.Drawing.Size(132, 21);
+            this.cb_filterByFaculty.TabIndex = 22;
+            this.cb_filterByFaculty.SelectedValueChanged += new System.EventHandler(this.cb_filterByFaculty_SelectedValueChanged);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(362, 16);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(78, 13);
+            this.label9.Size = new System.Drawing.Size(77, 13);
             this.label9.TabIndex = 23;
-            this.label9.Text = "Filter by course";
+            this.label9.Text = "Filter by faculty";
             // 
             // fm_Student
             // 
@@ -336,7 +337,7 @@
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.cb_filterByCourse);
+            this.Controls.Add(this.cb_filterByFaculty);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label4);
@@ -389,7 +390,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox cb_filterByCourse;
+        private System.Windows.Forms.ComboBox cb_filterByFaculty;
         private System.Windows.Forms.Label label9;
     }
 }

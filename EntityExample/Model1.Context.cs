@@ -12,6 +12,8 @@ namespace EntityExample
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class UniversityExampleEntities : DbContext
     {
@@ -32,5 +34,14 @@ namespace EntityExample
         public virtual DbSet<Lesson> Lesson { get; set; }
         public virtual DbSet<Student> Student { get; set; }
         public virtual DbSet<Subject> Subject { get; set; }
+    
+        public virtual ObjectResult<GetStudentsByFaculty_Result> GetStudentsByFaculty(string faculty)
+        {
+            var facultyParameter = faculty != null ?
+                new ObjectParameter("faculty", faculty) :
+                new ObjectParameter("faculty", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetStudentsByFaculty_Result>("GetStudentsByFaculty", facultyParameter);
+        }
     }
 }

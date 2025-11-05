@@ -186,5 +186,16 @@
       <End Role="Subject" EntitySet="Subject" />
       <End Role="Lesson" EntitySet="Lesson" />
     </AssociationSet>
+    <FunctionImport Name="GetStudentsByFaculty" ReturnType="Collection(UniversityExampleModel.GetStudentsByFaculty_Result)">
+      <Parameter Name="faculty" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
+  <ComplexType Name="GetStudentsByFaculty_Result">
+    <Property Type="Int64" Name="ID_student" Nullable="false" />
+    <Property Type="String" Name="Faculty" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Student" Nullable="false" MaxLength="101" />
+    <Property Type="String" Name="Gender" Nullable="true" MaxLength="1" />
+    <Property Type="DateTime" Name="BirthYear" Nullable="true" />
+    <Property Type="String" Name="Course" Nullable="true" MaxLength="50" />
+  </ComplexType>
 </Schema>

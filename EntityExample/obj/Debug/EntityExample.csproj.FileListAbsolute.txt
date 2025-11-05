@@ -17,4 +17,3 @@ C:\Users\User\Documents\C_sharp\Darbini\EntityExample\EntityExample\obj\Debug\En
 C:\Users\User\Documents\C_sharp\Darbini\EntityExample\EntityExample\obj\Debug\EntityExample.exe
 C:\Users\User\Documents\C_sharp\Darbini\EntityExample\EntityExample\obj\Debug\EntityExample.pdb
 C:\Users\User\Documents\C_sharp\Darbini\EntityExample\EntityExample\obj\Debug\EntityExample.Forms.fm_FacultyCourse.resources
-C:\Users\User\Documents\C_sharp\Darbini\EntityExample\EntityExample\obj\Debug\EntityExample.exe.config
