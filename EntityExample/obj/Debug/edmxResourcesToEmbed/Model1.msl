@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="UniversityExampleModelStoreContainer" CdmEntityContainer="UniversityExampleEntities">
+    <EntitySetMapping Name="Address">
+      <EntityTypeMapping TypeName="UniversityExampleModel.Address">
+        <MappingFragment StoreEntitySet="Address">
+          <ScalarProperty Name="ID_address" ColumnName="ID_address" />
+          <ScalarProperty Name="Region" ColumnName="Region" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Street" ColumnName="Street" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Course">
+      <EntityTypeMapping TypeName="UniversityExampleModel.Course">
+        <MappingFragment StoreEntitySet="Course">
+          <ScalarProperty Name="ID_course" ColumnName="ID_course" />
+          <ScalarProperty Name="ID_faculty" ColumnName="ID_faculty" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Faculty">
+      <EntityTypeMapping TypeName="UniversityExampleModel.Faculty">
+        <MappingFragment StoreEntitySet="Faculty">
+          <ScalarProperty Name="ID_faculty" ColumnName="ID_faculty" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID_address" ColumnName="ID_address" />
+          <ScalarProperty Name="ANNO" ColumnName="ANNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lector">
+      <EntityTypeMapping TypeName="UniversityExampleModel.Lector">
+        <MappingFragment StoreEntitySet="Lector">
+          <ScalarProperty Name="ID_lector" ColumnName="ID_lector" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="ID_address" ColumnName="ID_address" />
+          <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lesson">
+      <EntityTypeMapping TypeName="UniversityExampleModel.Lesson">
+        <MappingFragment StoreEntitySet="Lesson">
+          <ScalarProperty Name="ID_lesson" ColumnName="ID_lesson" />
+          <ScalarProperty Name="ID_subject" ColumnName="ID_subject" />
+          <ScalarProperty Name="ID_lector" ColumnName="ID_lector" />
+          <ScalarProperty Name="ID_course" ColumnName="ID_course" />
+          <ScalarProperty Name="RoomNr" ColumnName="RoomNr" />
+          <ScalarProperty Name="LessonDate" ColumnName="LessonDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Student">
+      <EntityTypeMapping TypeName="UniversityExampleModel.Student">
+        <MappingFragment StoreEntitySet="Student">
+          <ScalarProperty Name="ID_student" ColumnName="ID_student" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="BirthYear" ColumnName="BirthYear" />
+          <ScalarProperty Name="ID_course" ColumnName="ID_course" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Subject">
+      <EntityTypeMapping TypeName="UniversityExampleModel.Subject">
+        <MappingFragment StoreEntitySet="Subject">
+          <ScalarProperty Name="ID_course" ColumnName="ID_course" />
+          <ScalarProperty Name="ID_subject" ColumnName="ID_subject" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Creditpoints" ColumnName="Creditpoints" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

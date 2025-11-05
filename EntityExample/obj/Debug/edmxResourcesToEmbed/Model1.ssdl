@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UniversityExampleModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Address">
+    <Key>
+      <PropertyRef Name="ID_address" />
+    </Key>
+    <Property Name="ID_address" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Region" Type="nvarchar" MaxLength="50" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" />
+    <Property Name="Street" Type="nvarchar" MaxLength="50" />
+    <Property Name="Number" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Course">
+    <Key>
+      <PropertyRef Name="ID_course" />
+    </Key>
+    <Property Name="ID_course" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_faculty" Type="bigint" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Faculty">
+    <Key>
+      <PropertyRef Name="ID_faculty" />
+    </Key>
+    <Property Name="ID_faculty" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="ID_address" Type="bigint" />
+    <Property Name="ANNO" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Lector">
+    <Key>
+      <PropertyRef Name="ID_lector" />
+    </Key>
+    <Property Name="ID_lector" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Surname" Type="nvarchar" MaxLength="50" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="ID_address" Type="bigint" />
+    <Property Name="HireDate" Type="date" />
+  </EntityType>
+  <EntityType Name="Lesson">
+    <Key>
+      <PropertyRef Name="ID_lesson" />
+    </Key>
+    <Property Name="ID_lesson" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_subject" Type="bigint" />
+    <Property Name="ID_lector" Type="bigint" />
+    <Property Name="ID_course" Type="bigint" />
+    <Property Name="RoomNr" Type="int" />
+    <Property Name="LessonDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="ID_student" />
+    </Key>
+    <Property Name="ID_student" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Surname" Type="nvarchar" MaxLength="50" />
+    <Property Name="Gender" Type="char" MaxLength="1" />
+    <Property Name="BirthYear" Type="date" />
+    <Property Name="ID_course" Type="bigint" />
+  </EntityType>
+  <EntityType Name="Subject">
+    <Key>
+      <PropertyRef Name="ID_subject" />
+    </Key>
+    <Property Name="ID_subject" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Creditpoints" Type="tinyint" />
+    <Property Name="Description" Type="nvarchar" MaxLength="50" />
+    <Property Name="ID_course" Type="bigint" />
+  </EntityType>
+  <Association Name="FK_Course_Faculty">
+    <End Role="Faculty" Type="Self.Faculty" Multiplicity="0..1" />
+    <End Role="Course" Type="Self.Course" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Faculty">
+        <PropertyRef Name="ID_faculty" />
+      </Principal>
+      <Dependent Role="Course">
+        <PropertyRef Name="ID_faculty" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lector_Address">
+    <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+    <End Role="Lector" Type="Self.Lector" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="ID_address" />
+      </Principal>
+      <Dependent Role="Lector">
+        <PropertyRef Name="ID_address" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lesson_Course">
+    <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+    <End Role="Lesson" Type="Self.Lesson" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="ID_course" />
+      </Principal>
+      <Dependent Role="Lesson">
+        <PropertyRef Name="ID_course" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lesson_Lector">
+    <End Role="Lector" Type="Self.Lector" Multiplicity="0..1" />
+    <End Role="Lesson" Type="Self.Lesson" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lector">
+        <PropertyRef Name="ID_lector" />
+      </Principal>
+      <Dependent Role="Lesson">
+        <PropertyRef Name="ID_lector" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lesson_Subject">
+    <End Role="Subject" Type="Self.Subject" Multiplicity="0..1" />
+    <End Role="Lesson" Type="Self.Lesson" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subject">
+        <PropertyRef Name="ID_subject" />
+      </Principal>
+      <Dependent Role="Lesson">
+        <PropertyRef Name="ID_subject" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_Course">
+    <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+    <End Role="Student" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="ID_course" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="ID_course" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="UniversityExampleModelStoreContainer">
+    <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Faculty" EntityType="Self.Faculty" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Lector" EntityType="Self.Lector" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Lesson" EntityType="Self.Lesson" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Subject" EntityType="Self.Subject" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Course_Faculty" Association="Self.FK_Course_Faculty">
+      <End Role="Faculty" EntitySet="Faculty" />
+      <End Role="Course" EntitySet="Course" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lector_Address" Association="Self.FK_Lector_Address">
+      <End Role="Address" EntitySet="Address" />
+      <End Role="Lector" EntitySet="Lector" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lesson_Course" Association="Self.FK_Lesson_Course">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="Lesson" EntitySet="Lesson" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lesson_Lector" Association="Self.FK_Lesson_Lector">
+      <End Role="Lector" EntitySet="Lector" />
+      <End Role="Lesson" EntitySet="Lesson" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lesson_Subject" Association="Self.FK_Lesson_Subject">
+      <End Role="Subject" EntitySet="Subject" />
+      <End Role="Lesson" EntitySet="Lesson" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_Course" Association="Self.FK_Student_Course">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="Student" EntitySet="Student" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
