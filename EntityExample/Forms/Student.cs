@@ -19,6 +19,8 @@ namespace EntityExample.Forms
         Validation validation = new Validation();
         private int pageNr = 1;
         private int pageSize = 5;
+        private string searchText = string.Empty;
+        private string selectedFacultyName = string.Empty;
         private List<StudentView> students = new List<StudentView>();
         private List<StudentView> filteredStudents = new List<StudentView>();
         private readonly fm_University _universityForm;
@@ -163,17 +165,35 @@ namespace EntityExample.Forms
         }
         private void cb_filterByFaculty_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (cb_filterByFaculty.SelectedIndex != -1)
+            selectedFacultyName = cb_filterByFaculty.SelectedIndex != -1 ? cb_filterByFaculty.Text : string.Empty;
+            ApplyFilters();
+        }
+        private void txtSearchStudent_TextChanged(object sender, EventArgs e)
+        {
+            searchText = txtSearchStudent.Text;
+            ApplyFilters();
+        }
+        private void ApplyFilters()
+        {
+            IEnumerable<StudentView> query = students;
+            if (!string.IsNullOrEmpty(selectedFacultyName))
             {
-                List<GetStudentsByFaculty_Result> selectedFaculty = factory.GetStudentsByFaculty(cb_filterByFaculty.Text);
-                filteredStudents = students.Where(s => selectedFaculty.Any(f => f.ID_student == s.ID_student)).ToList();
-                helper.ReloadGrid(grid_Students, helper.Paging(filteredStudents, pageNr, pageSize));
+                List<GetStudentsByFaculty_Result> selectedFaculty = factory.GetStudentsByFaculty(selectedFacultyName);
+                query = query.Where(s => selectedFaculty.Any(f => f.ID_student == s.ID_student));
             }
-            else
+            if (!string.IsNullOrEmpty(searchText))
             {
-                filteredStudents.Clear();
-                helper.ReloadGrid(grid_Students, helper.Paging(students, pageNr, pageSize));
+                query = query.Where(s =>
+                    s.Name.ToLower().Contains(searchText.ToLower()) ||
+                    s.Surname.ToLower().Contains(searchText.ToLower()) ||
+                    s.Gender.ToLower().Contains(searchText.ToLower()) ||
+                    (s.CourseName != null && s.CourseName.ToLower().Contains(searchText.ToLower()))
+                );
             }
+            filteredStudents = query.ToList();
+            pageNr = 1;
+            Paging();
+            helper.ReloadGrid(grid_Students, helper.Paging(filteredStudents, pageNr, pageSize));
         }
     }
 }

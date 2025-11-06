@@ -43,5 +43,14 @@ namespace EntityExample
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetStudentsByFaculty_Result>("GetStudentsByFaculty", facultyParameter);
         }
+    
+        public virtual ObjectResult<GetStudentsByFilter_Result> GetStudentsByFilter(string inputValue)
+        {
+            var inputValueParameter = inputValue != null ?
+                new ObjectParameter("inputValue", inputValue) :
+                new ObjectParameter("inputValue", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetStudentsByFilter_Result>("GetStudentsByFilter", inputValueParameter);
+        }
     }
 }

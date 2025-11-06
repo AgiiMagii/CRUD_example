@@ -6,6 +6,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using Z.EntityFramework.Plus;
 
 namespace EntityExample.Lib
 {
@@ -21,7 +22,8 @@ namespace EntityExample.Lib
                 Surname = s.Surname,
                 Gender = s.Gender,
                 BirthYear = s.BirthYear,
-                CourseName = s.Course != null ? s.Course.Name : string.Empty
+                CourseName = s.Course != null ? s.Course.Name : string.Empty,
+                Scholarship = s.Scholarship != null ? s.Scholarship.Value.ToString("C") : "N/A"
 
             }).ToList();
         }
@@ -61,7 +63,7 @@ namespace EntityExample.Lib
         {
             return repository.GetEntities<Course>().Where(c => c.ID_faculty == facultyId).ToList();
         }
-        public List<GetStudentsByFaculty_Result> GetStudentsByFaculty (string faculty)
+        public List<GetStudentsByFaculty_Result> GetStudentsByFaculty(string faculty)
         {
             try
             {
@@ -74,6 +76,18 @@ namespace EntityExample.Lib
                 throw new ApplicationException("An error occurred while retrieving students by faculty.", ex);
             }
         }
+        //public List<StudentView> GetStudentsByFilter(string searchText)
+        //{
+        //    try
+        //    {
+        //        SqlParameter parameters = new System.Data.SqlClient.SqlParameter("@filterValue", searchText ?? (object)DBNull.Value);
+        //        return repository.ExecuteStoredProcedure<StudentView>("GetStudentsByFilter", parameters);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new ApplicationException("An error occurred while retrieving students by filter.", ex);
+        //    }
+        //}
         public Student RegStudent(Student student)
         {
             return repository.AddEntity(student);
@@ -239,7 +253,23 @@ namespace EntityExample.Lib
             repository.DeleteEntity(addressEntity);
             return true;
         }
-
+        public bool AddScholarship(long courseID, decimal amount)
+        {
+            try
+            {
+                using (var context = new UniversityExampleEntities())
+                {
+                    context.Student
+                        .Where(s => s.ID_course == courseID)
+                        .Update(s => new Student { Scholarship = amount });
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }
-    
+

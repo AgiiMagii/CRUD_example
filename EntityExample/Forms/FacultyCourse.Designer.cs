@@ -34,6 +34,9 @@
             this.flPanelFaculties = new System.Windows.Forms.FlowLayoutPanel();
             this.gridCourses = new System.Windows.Forms.DataGridView();
             this.gbCourses = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.buttSetScholar = new System.Windows.Forms.Button();
+            this.numScholarship = new System.Windows.Forms.NumericUpDown();
             this.gridSubjects = new System.Windows.Forms.DataGridView();
             this.txtCourseName = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -58,6 +61,7 @@
             this.gbFaculties.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridCourses)).BeginInit();
             this.gbCourses.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numScholarship)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSubjects)).BeginInit();
             this.gbFacultyInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picFacToUni)).BeginInit();
@@ -91,13 +95,16 @@
             this.gridCourses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridCourses.Location = new System.Drawing.Point(15, 75);
             this.gridCourses.Name = "gridCourses";
-            this.gridCourses.Size = new System.Drawing.Size(270, 107);
+            this.gridCourses.Size = new System.Drawing.Size(153, 107);
             this.gridCourses.TabIndex = 2;
             this.gridCourses.SelectionChanged += new System.EventHandler(this.gridCourses_SelectionChanged);
             // 
             // gbCourses
             // 
             this.gbCourses.BackColor = System.Drawing.Color.Silver;
+            this.gbCourses.Controls.Add(this.label7);
+            this.gbCourses.Controls.Add(this.buttSetScholar);
+            this.gbCourses.Controls.Add(this.numScholarship);
             this.gbCourses.Controls.Add(this.gridSubjects);
             this.gbCourses.Controls.Add(this.txtCourseName);
             this.gbCourses.Controls.Add(this.label6);
@@ -111,6 +118,38 @@
             this.gbCourses.TabIndex = 3;
             this.gbCourses.TabStop = false;
             this.gbCourses.Text = "Courses";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(179, 83);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(62, 13);
+            this.label7.TabIndex = 23;
+            this.label7.Text = "Scholarship";
+            // 
+            // buttSetScholar
+            // 
+            this.buttSetScholar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttSetScholar.Location = new System.Drawing.Point(303, 97);
+            this.buttSetScholar.Name = "buttSetScholar";
+            this.buttSetScholar.Size = new System.Drawing.Size(22, 23);
+            this.buttSetScholar.TabIndex = 22;
+            this.buttSetScholar.Text = "✔";
+            this.buttSetScholar.UseVisualStyleBackColor = true;
+            this.buttSetScholar.Click += new System.EventHandler(this.buttSetScholar_Click);
+            // 
+            // numScholarship
+            // 
+            this.numScholarship.Location = new System.Drawing.Point(177, 99);
+            this.numScholarship.Maximum = new decimal(new int[] {
+            300,
+            0,
+            0,
+            0});
+            this.numScholarship.Name = "numScholarship";
+            this.numScholarship.Size = new System.Drawing.Size(120, 20);
+            this.numScholarship.TabIndex = 21;
             // 
             // gridSubjects
             // 
@@ -342,6 +381,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridCourses)).EndInit();
             this.gbCourses.ResumeLayout(false);
             this.gbCourses.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numScholarship)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSubjects)).EndInit();
             this.gbFacultyInfo.ResumeLayout(false);
             this.gbFacultyInfo.PerformLayout();
@@ -377,5 +417,8 @@
         private System.Windows.Forms.TextBox txtCourseName;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridView gridSubjects;
+        private System.Windows.Forms.Button buttSetScholar;
+        private System.Windows.Forms.NumericUpDown numScholarship;
+        private System.Windows.Forms.Label label7;
     }
 }

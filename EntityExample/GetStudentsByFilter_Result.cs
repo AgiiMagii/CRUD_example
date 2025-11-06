@@ -10,9 +10,8 @@
 namespace EntityExample
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Student
+    public partial class GetStudentsByFilter_Result
     {
         public long ID_student { get; set; }
         public string Name { get; set; }
@@ -21,7 +20,5 @@ namespace EntityExample
         public Nullable<System.DateTime> BirthYear { get; set; }
         public Nullable<long> ID_course { get; set; }
         public Nullable<decimal> Scholarship { get; set; }
-    
-        public virtual Course Course { get; set; }
     }
 }

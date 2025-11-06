@@ -70,6 +70,7 @@
     <Property Name="BirthYear" Type="DateTime" Precision="0" />
     <Property Name="ID_course" Type="Int64" />
     <NavigationProperty Name="Course" Relationship="Self.FK_Student_Course" FromRole="Student" ToRole="Course" />
+    <Property Name="Scholarship" Type="Decimal" Precision="4" Scale="0" />
   </EntityType>
   <EntityType Name="Subject">
     <Key>
@@ -189,6 +190,9 @@
     <FunctionImport Name="GetStudentsByFaculty" ReturnType="Collection(UniversityExampleModel.GetStudentsByFaculty_Result)">
       <Parameter Name="faculty" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="GetStudentsByFilter" ReturnType="Collection(UniversityExampleModel.GetStudentsByFilter_Result)">
+      <Parameter Name="inputValue" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="GetStudentsByFaculty_Result">
     <Property Type="Int64" Name="ID_student" Nullable="false" />
@@ -197,5 +201,14 @@
     <Property Type="String" Name="Gender" Nullable="true" MaxLength="1" />
     <Property Type="DateTime" Name="BirthYear" Nullable="true" />
     <Property Type="String" Name="Course" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="GetStudentsByFilter_Result">
+    <Property Type="Int64" Name="ID_student" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Surname" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Gender" Nullable="true" MaxLength="1" />
+    <Property Type="DateTime" Name="BirthYear" Nullable="true" />
+    <Property Type="Int64" Name="ID_course" Nullable="true" />
+    <Property Type="Decimal" Name="Scholarship" Nullable="true" Precision="4" Scale="0" />
   </ComplexType>
 </Schema>

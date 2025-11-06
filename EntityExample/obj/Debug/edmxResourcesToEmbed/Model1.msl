@@ -58,6 +58,7 @@
     <EntitySetMapping Name="Student">
       <EntityTypeMapping TypeName="UniversityExampleModel.Student">
         <MappingFragment StoreEntitySet="Student">
+          <ScalarProperty Name="Scholarship" ColumnName="Scholarship" />
           <ScalarProperty Name="ID_student" ColumnName="ID_student" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Surname" ColumnName="Surname" />
@@ -87,6 +88,19 @@
           <ScalarProperty Name="Gender" ColumnName="Gender" />
           <ScalarProperty Name="BirthYear" ColumnName="BirthYear" />
           <ScalarProperty Name="Course" ColumnName="Course" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetStudentsByFilter" FunctionName="UniversityExampleModel.Store.GetStudentsByFilter">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="UniversityExampleModel.GetStudentsByFilter_Result">
+          <ScalarProperty Name="ID_student" ColumnName="ID_student" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="BirthYear" ColumnName="BirthYear" />
+          <ScalarProperty Name="ID_course" ColumnName="ID_course" />
+          <ScalarProperty Name="Scholarship" ColumnName="Scholarship" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

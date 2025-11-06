@@ -14,5 +14,6 @@ namespace EntityExample.Views
         public string Gender { get; set; }
         public Nullable<System.DateTime> BirthYear { get; set; }
         public string CourseName { get; set; }
+        public string Scholarship { get; set; }
     }
 }

@@ -14,6 +14,8 @@ namespace EntityExample.Forms
 {
     public partial class fm_FacultyCourse : Form
     {
+        // TODO: Implement scholarship management for courses, because we can't leave students without scholarships on registration.
+
         Factory factory = new Factory();
         Helper helper = new Helper();
         Validation validation = new Validation();
@@ -107,6 +109,11 @@ namespace EntityExample.Forms
             }
             List<Course> courses = factory.GetCoursesByFacultyId(id);
             helper.ReloadGrid(gridCourses, courses);
+            gridCourses.ColumnHeadersVisible = false;
+            foreach (DataGridViewColumn column in gridCourses.Columns)
+            {
+                column.Visible = (column.Name == "Name");
+            }
         }
         private void fm_FacultyCourse_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -124,8 +131,8 @@ namespace EntityExample.Forms
                 {
                     LoadFacultyUI(facultyId);
                 }
+                txtCourseName.Clear();
             }
-
         }
         private void picFacToUni_Click(object sender, EventArgs e)
         {
@@ -181,7 +188,7 @@ namespace EntityExample.Forms
             }
         }
         private void ReloadFacultyButtons()
-        { 
+        {
             flPanelFaculties.Controls.Clear();
             LoadFacultyButtons();
         }
@@ -283,7 +290,7 @@ namespace EntityExample.Forms
             selectedCourse = (Course)gridCourses.Rows[selectedRowIndex].DataBoundItem;
             Course courseToUpdate = factory.GetCoursesByFacultyId(selectedFaculty.ID_faculty)
                                            .FirstOrDefault(c => c.ID_course == selectedCourse.ID_course);
-            if (courseToUpdate != null)
+            if (courseToUpdate != null && selectedRowIndex != -1)
             {
                 courseToUpdate.Name = txtCourseName.Text;
                 List<string> errors = validation.CourseValidation(courseToUpdate);
@@ -312,7 +319,26 @@ namespace EntityExample.Forms
                 txtCourseName.Text = selectedCourse.Name;
             }
         }
-        
+        private void buttSetScholar_Click(object sender, EventArgs e)
+        {
+            if (selectedCourse == null)
+            {
+                MessageBox.Show("Please select a course to set a scholarship for.", "No Course Selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            decimal scholarshipAmount = numScholarship.Value;
+
+            try
+            {
+                factory.AddScholarship(selectedCourse.ID_course, scholarshipAmount);
+                MessageBox.Show("Scholarship set successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error setting scholarship: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
 

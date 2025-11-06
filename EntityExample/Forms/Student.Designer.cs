@@ -52,7 +52,7 @@
             this.buttUpdate = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtSearchStudent = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.cb_filterByFaculty = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -65,9 +65,9 @@
             // 
             this.grid_Students.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.grid_Students.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grid_Students.Location = new System.Drawing.Point(99, 38);
+            this.grid_Students.Location = new System.Drawing.Point(12, 38);
             this.grid_Students.Name = "grid_Students";
-            this.grid_Students.Size = new System.Drawing.Size(479, 148);
+            this.grid_Students.Size = new System.Drawing.Size(566, 148);
             this.grid_Students.TabIndex = 1;
             this.grid_Students.SelectionChanged += new System.EventHandler(this.grid_Students_SelectionChanged);
             // 
@@ -75,7 +75,7 @@
             // 
             this.buttPageRight.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttPageRight.Enabled = false;
-            this.buttPageRight.Location = new System.Drawing.Point(374, 214);
+            this.buttPageRight.Location = new System.Drawing.Point(319, 205);
             this.buttPageRight.Name = "buttPageRight";
             this.buttPageRight.Size = new System.Drawing.Size(95, 23);
             this.buttPageRight.TabIndex = 2;
@@ -87,7 +87,7 @@
             // 
             this.buttPageLeft.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttPageLeft.Enabled = false;
-            this.buttPageLeft.Location = new System.Drawing.Point(231, 214);
+            this.buttPageLeft.Location = new System.Drawing.Point(176, 205);
             this.buttPageLeft.Name = "buttPageLeft";
             this.buttPageLeft.Size = new System.Drawing.Size(95, 23);
             this.buttPageLeft.TabIndex = 3;
@@ -98,7 +98,7 @@
             // labelShowing
             // 
             this.labelShowing.AutoSize = true;
-            this.labelShowing.Location = new System.Drawing.Point(255, 198);
+            this.labelShowing.Location = new System.Drawing.Point(200, 189);
             this.labelShowing.Name = "labelShowing";
             this.labelShowing.Size = new System.Drawing.Size(35, 13);
             this.labelShowing.TabIndex = 4;
@@ -107,7 +107,7 @@
             // labelNext
             // 
             this.labelNext.AutoSize = true;
-            this.labelNext.Location = new System.Drawing.Point(398, 198);
+            this.labelNext.Location = new System.Drawing.Point(343, 189);
             this.labelNext.Name = "labelNext";
             this.labelNext.Size = new System.Drawing.Size(0, 13);
             this.labelNext.TabIndex = 5;
@@ -115,7 +115,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(338, 198);
+            this.label1.Location = new System.Drawing.Point(283, 189);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(19, 13);
             this.label1.TabIndex = 6;
@@ -276,7 +276,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(43, 88);
+            this.label4.Location = new System.Drawing.Point(43, 426);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(32, 13);
             this.label4.TabIndex = 19;
@@ -287,7 +287,7 @@
             this.pictureBox1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox1.Image = global::EntityExample.Properties.Resources.Ionic_Ionicons_Arrow_back_128;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 11);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 349);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(81, 70);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -295,18 +295,19 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.picB_ToUniversity);
             // 
-            // textBox1
+            // txtSearchStudent
             // 
-            this.textBox1.Location = new System.Drawing.Point(135, 11);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(191, 20);
-            this.textBox1.TabIndex = 20;
+            this.txtSearchStudent.Location = new System.Drawing.Point(46, 12);
+            this.txtSearchStudent.Name = "txtSearchStudent";
+            this.txtSearchStudent.Size = new System.Drawing.Size(191, 20);
+            this.txtSearchStudent.TabIndex = 20;
+            this.txtSearchStudent.TextChanged += new System.EventHandler(this.txtSearchStudent_TextChanged);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(103, 12);
+            this.label8.Location = new System.Drawing.Point(14, 13);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(26, 18);
             this.label8.TabIndex = 21;
@@ -339,7 +340,7 @@
             this.Controls.Add(this.label9);
             this.Controls.Add(this.cb_filterByFaculty);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtSearchStudent);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.groupStudentReg);
             this.Controls.Add(this.label1);
@@ -388,7 +389,7 @@
         private System.Windows.Forms.Button buttDelete;
         private System.Windows.Forms.Button buttUpdate;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtSearchStudent;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cb_filterByFaculty;
         private System.Windows.Forms.Label label9;
