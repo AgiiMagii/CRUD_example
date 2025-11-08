@@ -62,19 +62,28 @@ namespace EntityExample.Forms
         private void LoadFacultyButtons()
         {
             faculties = factory.GetFaculties();
+
+            flPanelFaculties.WrapContents = true;
+            flPanelFaculties.AutoScroll = true;
+            flPanelFaculties.FlowDirection = FlowDirection.TopDown;
+
             foreach (Faculty faculty in faculties)
             {
                 Button facultyButton = new Button
                 {
                     Text = faculty.Name,
                     Tag = faculty.ID_faculty,
-                    Width = 100,
-                    Height = 100,
-                    Margin = new Padding(5)
+                    Size = new Size(170, 140),
+                    Padding = new Padding(8),
+                    TextAlign = ContentAlignment.MiddleCenter,
+                    UseCompatibleTextRendering = true,
+                    AutoEllipsis = true,
+                    AutoSize = false
                 };
                 facultyButton.Click += FacultyButton_Click;
                 flPanelFaculties.Controls.Add(facultyButton);
             }
+
         }
         private void LoadFacultyUI(long id)
         {
@@ -97,29 +106,28 @@ namespace EntityExample.Forms
                 Street = addressEntity.Street,
                 Number = addressEntity.Number,
             };
-            string facultyFullAddress = address.FullAddress;
-            txtFacAddress.Text = facultyFullAddress;
+            txtFacAddress.Text = address.FullAddress;
+            lectors = factory.GetLectorsByFaculty(id);
+            listViewLectors.View = View.Details;
+            if (listViewLectors.Columns.Count == 0)
+            {
+                listViewLectors.Columns.Add("Name", 100);
+                listViewLectors.Columns.Add("Surname", 100);
+                listViewLectors.Columns.Add("Phone", 100);
+            }
 
             listViewLectors.Items.Clear();
-
-            if (faculty.ID_address.HasValue)
+            foreach (LectorView lector in lectors)
             {
-                lectors = factory.GetLectors();
+                ListViewItem item = new ListViewItem($"Prof. {lector.Name}");
+                item.SubItems.Add(lector.Surname);
+                item.SubItems.Add(lector.Phone);
+                listViewLectors.Items.Add(item);
+            }
 
-                long matchingLectors = address.ID_address;
-
-                foreach (var lector in lectors)
-                {
-                    Lector lectorEntity = factory.GetLectorById(lector.ID_lector);
-                    if (lectorEntity.ID_address == matchingLectors)
-                    {
-                        ListViewItem item = new ListViewItem($"Prof. {lector.Name} {lector.Surname}, Phone nr: {lector.Phone}");
-
-                        listViewLectors.Items.Add(item);
-                        listViewLectors.View = View.List;
-
-                    }
-                }
+            foreach (ColumnHeader column in listViewLectors.Columns)
+            {
+                column.Width = -2;
             }
             List<Course> courses = factory.GetCoursesByFacultyId(id);
             helper.ReloadGrid(gridCourses, courses);
@@ -147,13 +155,6 @@ namespace EntityExample.Forms
                 }
                 txtCourseName.Clear();
             }
-        }
-        private void picFacToUni_Click(object sender, EventArgs e)
-        {
-            _universityForm.Location = this.Location;
-            _universityForm.Size = this.Size;
-            _universityForm.Show();
-            this.Close();
         }
         private void labelClearFacUI_Click(object sender, EventArgs e)
         {
@@ -384,6 +385,13 @@ namespace EntityExample.Forms
                 }
             }
 
+        }
+        private void butBackFaculty_Click(object sender, EventArgs e)
+        {
+            _universityForm.Location = this.Location;
+            _universityForm.Size = this.Size;
+            _universityForm.Show();
+            this.Close();
         }
     }
 }

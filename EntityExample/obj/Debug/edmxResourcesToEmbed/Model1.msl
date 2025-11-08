@@ -12,50 +12,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Course">
-      <EntityTypeMapping TypeName="UniversityExampleModel.Course">
-        <MappingFragment StoreEntitySet="Course">
-          <ScalarProperty Name="DefaultScholarship" ColumnName="DefaultScholarship" />
-          <ScalarProperty Name="ID_course" ColumnName="ID_course" />
-          <ScalarProperty Name="ID_faculty" ColumnName="ID_faculty" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Faculty">
-      <EntityTypeMapping TypeName="UniversityExampleModel.Faculty">
-        <MappingFragment StoreEntitySet="Faculty">
-          <ScalarProperty Name="ID_faculty" ColumnName="ID_faculty" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="ID_address" ColumnName="ID_address" />
-          <ScalarProperty Name="ANNO" ColumnName="ANNO" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Lector">
-      <EntityTypeMapping TypeName="UniversityExampleModel.Lector">
-        <MappingFragment StoreEntitySet="Lector">
-          <ScalarProperty Name="ID_lector" ColumnName="ID_lector" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Surname" ColumnName="Surname" />
-          <ScalarProperty Name="Phone" ColumnName="Phone" />
-          <ScalarProperty Name="ID_address" ColumnName="ID_address" />
-          <ScalarProperty Name="HireDate" ColumnName="HireDate" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Lesson">
-      <EntityTypeMapping TypeName="UniversityExampleModel.Lesson">
-        <MappingFragment StoreEntitySet="Lesson">
-          <ScalarProperty Name="ID_lesson" ColumnName="ID_lesson" />
-          <ScalarProperty Name="ID_subject" ColumnName="ID_subject" />
-          <ScalarProperty Name="ID_lector" ColumnName="ID_lector" />
-          <ScalarProperty Name="ID_course" ColumnName="ID_course" />
-          <ScalarProperty Name="RoomNr" ColumnName="RoomNr" />
-          <ScalarProperty Name="LessonDate" ColumnName="LessonDate" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Student">
       <EntityTypeMapping TypeName="UniversityExampleModel.Student">
         <MappingFragment StoreEntitySet="Student">
@@ -105,5 +61,61 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <EntitySetMapping Name="Lector">
+      <EntityTypeMapping TypeName="UniversityExampleModel.Lector">
+        <MappingFragment StoreEntitySet="Lector">
+          <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+          <ScalarProperty Name="ID_faculty" ColumnName="ID_faculty" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID_lector" ColumnName="ID_lector" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Course">
+      <EntityTypeMapping TypeName="UniversityExampleModel.Course">
+        <MappingFragment StoreEntitySet="Course">
+          <ScalarProperty Name="DefaultScholarship" ColumnName="DefaultScholarship" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID_faculty" ColumnName="ID_faculty" />
+          <ScalarProperty Name="ID_course" ColumnName="ID_course" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Faculty">
+      <EntityTypeMapping TypeName="UniversityExampleModel.Faculty">
+        <MappingFragment StoreEntitySet="Faculty">
+          <ScalarProperty Name="ANNO" ColumnName="ANNO" />
+          <ScalarProperty Name="ID_address" ColumnName="ID_address" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID_faculty" ColumnName="ID_faculty" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lesson">
+      <EntityTypeMapping TypeName="UniversityExampleModel.Lesson">
+        <MappingFragment StoreEntitySet="Lesson">
+          <ScalarProperty Name="LessonName" ColumnName="LessonName" />
+          <ScalarProperty Name="ID_lesson" ColumnName="ID_lesson" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Course_lesson" TypeName="UniversityExampleModel.Course_lesson" StoreEntitySet="Course_lesson">
+      <EndProperty Name="Lesson">
+        <ScalarProperty Name="ID_lesson" ColumnName="ID_lesson" />
+      </EndProperty>
+      <EndProperty Name="Course">
+        <ScalarProperty Name="ID_course" ColumnName="ID_course" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Lesson_subject" TypeName="UniversityExampleModel.Lesson_subject" StoreEntitySet="Lesson_subject">
+      <EndProperty Name="Subject">
+        <ScalarProperty Name="ID_subject" ColumnName="ID_subject" />
+      </EndProperty>
+      <EndProperty Name="Lesson">
+        <ScalarProperty Name="ID_lesson" ColumnName="ID_lesson" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

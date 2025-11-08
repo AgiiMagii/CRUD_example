@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fm_FacultyCourse));
             this.gbFaculties = new System.Windows.Forms.GroupBox();
-            this.flPanelFaculties = new System.Windows.Forms.FlowLayoutPanel();
             this.gridCourses = new System.Windows.Forms.DataGridView();
             this.gbCourses = new System.Windows.Forms.GroupBox();
             this.labelAccept = new System.Windows.Forms.Label();
@@ -57,6 +56,8 @@
             this.txtFacultyName = new System.Windows.Forms.TextBox();
             this.picFacToUni = new System.Windows.Forms.PictureBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.flPanelFaculties = new System.Windows.Forms.FlowLayoutPanel();
+            this.butBackFaculty = new System.Windows.Forms.Button();
             this.gbFaculties.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridCourses)).BeginInit();
             this.gbCourses.SuspendLayout();
@@ -74,22 +75,10 @@
             this.gbFaculties.Controls.Add(this.flPanelFaculties);
             this.gbFaculties.Location = new System.Drawing.Point(14, 12);
             this.gbFaculties.Name = "gbFaculties";
-            this.gbFaculties.Size = new System.Drawing.Size(148, 343);
+            this.gbFaculties.Size = new System.Drawing.Size(175, 343);
             this.gbFaculties.TabIndex = 0;
             this.gbFaculties.TabStop = false;
             this.gbFaculties.Text = "Faculties";
-            // 
-            // flPanelFaculties
-            // 
-            this.flPanelFaculties.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.flPanelFaculties.AutoScroll = true;
-            this.flPanelFaculties.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.flPanelFaculties.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.flPanelFaculties.Location = new System.Drawing.Point(0, 20);
-            this.flPanelFaculties.Name = "flPanelFaculties";
-            this.flPanelFaculties.Size = new System.Drawing.Size(148, 322);
-            this.flPanelFaculties.TabIndex = 0;
             // 
             // gridCourses
             // 
@@ -107,6 +96,7 @@
             this.gbCourses.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gbCourses.BackColor = System.Drawing.Color.Silver;
+            this.gbCourses.Controls.Add(this.butBackFaculty);
             this.gbCourses.Controls.Add(this.labelAccept);
             this.gbCourses.Controls.Add(this.label7);
             this.gbCourses.Controls.Add(this.numScholarship);
@@ -117,9 +107,9 @@
             this.gbCourses.Controls.Add(this.buttUpdateCourse);
             this.gbCourses.Controls.Add(this.buttAddCourse);
             this.gbCourses.Controls.Add(this.gridCourses);
-            this.gbCourses.Location = new System.Drawing.Point(8, 196);
+            this.gbCourses.Location = new System.Drawing.Point(6, 196);
             this.gbCourses.Name = "gbCourses";
-            this.gbCourses.Size = new System.Drawing.Size(597, 219);
+            this.gbCourses.Size = new System.Drawing.Size(591, 219);
             this.gbCourses.TabIndex = 3;
             this.gbCourses.TabStop = false;
             this.gbCourses.Text = "Courses";
@@ -160,14 +150,14 @@
             // 
             this.gridSubjects.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.gridSubjects.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridSubjects.Location = new System.Drawing.Point(399, 45);
+            this.gridSubjects.Location = new System.Drawing.Point(401, 16);
             this.gridSubjects.Name = "gridSubjects";
-            this.gridSubjects.Size = new System.Drawing.Size(182, 150);
+            this.gridSubjects.Size = new System.Drawing.Size(184, 197);
             this.gridSubjects.TabIndex = 20;
             // 
             // txtCourseName
             // 
-            this.txtCourseName.Location = new System.Drawing.Point(93, 19);
+            this.txtCourseName.Location = new System.Drawing.Point(83, 19);
             this.txtCourseName.Name = "txtCourseName";
             this.txtCourseName.Size = new System.Drawing.Size(172, 20);
             this.txtCourseName.TabIndex = 19;
@@ -175,7 +165,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(22, 22);
+            this.label6.Location = new System.Drawing.Point(12, 22);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(69, 13);
             this.label6.TabIndex = 18;
@@ -185,7 +175,7 @@
             // 
             this.lblDeleteCourse.AutoSize = true;
             this.lblDeleteCourse.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDeleteCourse.Location = new System.Drawing.Point(271, 16);
+            this.lblDeleteCourse.Location = new System.Drawing.Point(261, 16);
             this.lblDeleteCourse.Name = "lblDeleteCourse";
             this.lblDeleteCourse.Size = new System.Drawing.Size(33, 25);
             this.lblDeleteCourse.TabIndex = 16;
@@ -195,7 +185,7 @@
             // buttUpdateCourse
             // 
             this.buttUpdateCourse.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.buttUpdateCourse.Location = new System.Drawing.Point(180, 45);
+            this.buttUpdateCourse.Location = new System.Drawing.Point(170, 45);
             this.buttUpdateCourse.Name = "buttUpdateCourse";
             this.buttUpdateCourse.Size = new System.Drawing.Size(85, 24);
             this.buttUpdateCourse.TabIndex = 5;
@@ -206,7 +196,7 @@
             // buttAddCourse
             // 
             this.buttAddCourse.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.buttAddCourse.Location = new System.Drawing.Point(93, 45);
+            this.buttAddCourse.Location = new System.Drawing.Point(83, 45);
             this.buttAddCourse.Name = "buttAddCourse";
             this.buttAddCourse.Size = new System.Drawing.Size(85, 24);
             this.buttAddCourse.TabIndex = 4;
@@ -218,9 +208,9 @@
             // 
             this.listViewLectors.BackColor = System.Drawing.Color.WhiteSmoke;
             this.listViewLectors.HideSelection = false;
-            this.listViewLectors.Location = new System.Drawing.Point(349, 20);
+            this.listViewLectors.Location = new System.Drawing.Point(341, 7);
             this.listViewLectors.Name = "listViewLectors";
-            this.listViewLectors.Size = new System.Drawing.Size(256, 170);
+            this.listViewLectors.Size = new System.Drawing.Size(256, 182);
             this.listViewLectors.TabIndex = 3;
             this.listViewLectors.UseCompatibleStateImageBehavior = false;
             // 
@@ -242,9 +232,9 @@
             this.gbFacultyInfo.Controls.Add(this.txtFacAddress);
             this.gbFacultyInfo.Controls.Add(this.txtFacultyName);
             this.gbFacultyInfo.Controls.Add(this.gbCourses);
-            this.gbFacultyInfo.Location = new System.Drawing.Point(168, 12);
+            this.gbFacultyInfo.Location = new System.Drawing.Point(195, 12);
             this.gbFacultyInfo.Name = "gbFacultyInfo";
-            this.gbFacultyInfo.Size = new System.Drawing.Size(620, 424);
+            this.gbFacultyInfo.Size = new System.Drawing.Size(603, 424);
             this.gbFacultyInfo.TabIndex = 4;
             this.gbFacultyInfo.TabStop = false;
             this.gbFacultyInfo.Text = "About Faculty";
@@ -252,7 +242,7 @@
             // buttUpdateFac
             // 
             this.buttUpdateFac.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.buttUpdateFac.Location = new System.Drawing.Point(188, 165);
+            this.buttUpdateFac.Location = new System.Drawing.Point(176, 160);
             this.buttUpdateFac.Name = "buttUpdateFac";
             this.buttUpdateFac.Size = new System.Drawing.Size(85, 23);
             this.buttUpdateFac.TabIndex = 21;
@@ -263,7 +253,7 @@
             // buttAddFaculty
             // 
             this.buttAddFaculty.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.buttAddFaculty.Location = new System.Drawing.Point(101, 165);
+            this.buttAddFaculty.Location = new System.Drawing.Point(89, 160);
             this.buttAddFaculty.Name = "buttAddFaculty";
             this.buttAddFaculty.Size = new System.Drawing.Size(85, 23);
             this.buttAddFaculty.TabIndex = 20;
@@ -275,7 +265,7 @@
             // 
             this.labelEditAddress.AutoSize = true;
             this.labelEditAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEditAddress.Location = new System.Drawing.Point(279, 84);
+            this.labelEditAddress.Location = new System.Drawing.Point(267, 79);
             this.labelEditAddress.Name = "labelEditAddress";
             this.labelEditAddress.Size = new System.Drawing.Size(26, 18);
             this.labelEditAddress.TabIndex = 19;
@@ -286,7 +276,7 @@
             // 
             this.labelClearFacUI.AutoSize = true;
             this.labelClearFacUI.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelClearFacUI.Location = new System.Drawing.Point(244, 12);
+            this.labelClearFacUI.Location = new System.Drawing.Point(232, 7);
             this.labelClearFacUI.Name = "labelClearFacUI";
             this.labelClearFacUI.Size = new System.Drawing.Size(29, 31);
             this.labelClearFacUI.TabIndex = 18;
@@ -296,7 +286,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(30, 125);
+            this.label3.Location = new System.Drawing.Point(18, 120);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(61, 13);
             this.label3.TabIndex = 13;
@@ -305,7 +295,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(30, 87);
+            this.label2.Location = new System.Drawing.Point(18, 82);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(45, 13);
             this.label2.TabIndex = 12;
@@ -314,7 +304,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(30, 51);
+            this.label1.Location = new System.Drawing.Point(18, 46);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(70, 13);
             this.label1.TabIndex = 11;
@@ -324,14 +314,14 @@
             // 
             this.comboFacYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboFacYear.FormattingEnabled = true;
-            this.comboFacYear.Location = new System.Drawing.Point(101, 122);
+            this.comboFacYear.Location = new System.Drawing.Point(89, 117);
             this.comboFacYear.Name = "comboFacYear";
             this.comboFacYear.Size = new System.Drawing.Size(121, 21);
             this.comboFacYear.TabIndex = 10;
             // 
             // txtFacAddress
             // 
-            this.txtFacAddress.Location = new System.Drawing.Point(101, 84);
+            this.txtFacAddress.Location = new System.Drawing.Point(89, 79);
             this.txtFacAddress.Name = "txtFacAddress";
             this.txtFacAddress.ReadOnly = true;
             this.txtFacAddress.Size = new System.Drawing.Size(172, 20);
@@ -339,7 +329,7 @@
             // 
             // txtFacultyName
             // 
-            this.txtFacultyName.Location = new System.Drawing.Point(101, 46);
+            this.txtFacultyName.Location = new System.Drawing.Point(89, 41);
             this.txtFacultyName.Name = "txtFacultyName";
             this.txtFacultyName.Size = new System.Drawing.Size(172, 20);
             this.txtFacultyName.TabIndex = 5;
@@ -356,12 +346,30 @@
             this.picFacToUni.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picFacToUni.TabIndex = 5;
             this.picFacToUni.TabStop = false;
-            this.picFacToUni.Click += new System.EventHandler(this.picFacToUni_Click);
             // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // flPanelFaculties
+            // 
+            this.flPanelFaculties.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.flPanelFaculties.Location = new System.Drawing.Point(0, 24);
+            this.flPanelFaculties.Name = "flPanelFaculties";
+            this.flPanelFaculties.Size = new System.Drawing.Size(172, 319);
+            this.flPanelFaculties.TabIndex = 0;
+            // 
+            // butBackFaculty
+            // 
+            this.butBackFaculty.Location = new System.Drawing.Point(261, 95);
+            this.butBackFaculty.Name = "butBackFaculty";
+            this.butBackFaculty.Size = new System.Drawing.Size(75, 23);
+            this.butBackFaculty.TabIndex = 25;
+            this.butBackFaculty.Text = "Back";
+            this.butBackFaculty.UseVisualStyleBackColor = true;
+            this.butBackFaculty.Click += new System.EventHandler(this.butBackFaculty_Click);
             // 
             // fm_FacultyCourse
             // 
@@ -397,7 +405,6 @@
         private System.Windows.Forms.GroupBox gbCourses;
         private System.Windows.Forms.GroupBox gbFacultyInfo;
         private System.Windows.Forms.TextBox txtFacultyName;
-        private System.Windows.Forms.FlowLayoutPanel flPanelFaculties;
         private System.Windows.Forms.TextBox txtFacAddress;
         private System.Windows.Forms.ComboBox comboFacYear;
         private System.Windows.Forms.ListView listViewLectors;
@@ -419,5 +426,7 @@
         private System.Windows.Forms.NumericUpDown numScholarship;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label labelAccept;
+        private System.Windows.Forms.FlowLayoutPanel flPanelFaculties;
+        private System.Windows.Forms.Button butBackFaculty;
     }
 }

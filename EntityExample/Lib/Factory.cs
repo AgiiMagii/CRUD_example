@@ -35,7 +35,8 @@ namespace EntityExample.Lib
                 Name = l.Name,
                 Surname = l.Surname,
                 Phone = l.Phone,
-                HireDate = l.HireDate
+                HireDate = l.HireDate,
+                FacultyName = l.Faculty != null ? l.Faculty.Name : string.Empty
 
             }).ToList();
         }
@@ -62,6 +63,18 @@ namespace EntityExample.Lib
         public List<Course> GetCoursesByFacultyId(long facultyId)
         {
             return repository.GetEntities<Course>().Where(c => c.ID_faculty == facultyId).ToList();
+        }
+        public List<LectorView> GetLectorsByFaculty(long facultyId)
+        {
+            return repository.GetEntities<Lector>().Where(l => l.ID_faculty == facultyId).Select(l => new LectorView
+            {
+                ID_lector = l.ID_lector,
+                Name = l.Name,
+                Surname = l.Surname,
+                Phone = l.Phone,
+                HireDate = l.HireDate,
+                FacultyName = l.Faculty != null ? l.Faculty.Name : string.Empty
+            }).ToList();
         }
         public List<Student> GetStudentsByCourseID(long courseId)
         {
@@ -118,9 +131,7 @@ namespace EntityExample.Lib
         }
         public Lector GetLectorById(long id)
         {
-            // Find the lector once and avoid dereferencing a null result.
-            var lector = repository.GetEntities<Lector>().FirstOrDefault(l => l.ID_lector == id);
-            // Return the entity; its Address property may be null and the caller can use `lector?.Address`.
+            Lector lector = repository.GetEntities<Lector>().FirstOrDefault(l => l.ID_lector == id);
             return lector;
         }
         public Address GetAddressById(long id)
@@ -190,6 +201,7 @@ namespace EntityExample.Lib
             lectorEntity.Name = lector.Name;      //update properties from the provided lector
             lectorEntity.Surname = lector.Surname;
             lectorEntity.Phone = lector.Phone;
+            lectorEntity.ID_faculty = lector.ID_faculty;
             lectorEntity.HireDate = lector.HireDate;
             repository.UpdateEntity(lectorEntity); //save changes
             return true;

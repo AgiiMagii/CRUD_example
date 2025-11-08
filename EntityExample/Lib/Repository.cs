@@ -18,8 +18,7 @@ namespace EntityExample.Lib
         }
         public List<TEntity> GetEntities<TEntity>() where TEntity : class
         {
-            try
-            {
+            try {
                 return _dbContext.Set<TEntity>().ToList();
             }
             catch { throw; }

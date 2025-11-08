@@ -14,21 +14,13 @@ namespace EntityExample
     
     public partial class Lector
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Lector()
-        {
-            this.Lesson = new HashSet<Lesson>();
-        }
-    
         public long ID_lector { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Phone { get; set; }
-        public Nullable<long> ID_address { get; set; }
+        public Nullable<long> ID_faculty { get; set; }
         public Nullable<System.DateTime> HireDate { get; set; }
     
-        public virtual Address Address { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Lesson> Lesson { get; set; }
+        public virtual Faculty Faculty { get; set; }
     }
 }

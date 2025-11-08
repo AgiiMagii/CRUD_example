@@ -12,6 +12,6 @@ namespace EntityExample.Views
         public string Name { get; set; }
         public Nullable<long> ID_address { get; set; }
         public Nullable<System.DateTime> ANNO { get; set; }
-        public virtual List<Course> Courses { get; set; }
+        public Address Address { get; set; }
     }
 }

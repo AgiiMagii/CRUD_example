@@ -19,8 +19,12 @@ namespace EntityExample.Forms
         Helper helper = new Helper();
         Validation validation = new Validation();
         private readonly fm_University _universityForm;
+        private int pageNr = 1;
+        private int pageSize = 28;
+        private string searchText = string.Empty;
+        private string selectedFacultyName = string.Empty;
         private List<LectorView> lectors = new List<LectorView>();
-        private List<Address> addresses = new List<Address>();
+        private List<LectorView> filteredLectors = new List<LectorView>();
         public fm_Lector(fm_University universityForm)
         {
             InitializeComponent();
@@ -29,53 +33,63 @@ namespace EntityExample.Forms
         private void Lector_Load(object sender, EventArgs e)
         {
             lectors = factory.GetLectors();
-            helper.ReloadGrid(gridLectors, lectors);
+            helper.ReloadGrid(gridLectors, helper.Paging(lectors, pageNr, pageSize));
             gridLectors.Columns["HireDate"].DefaultCellStyle.Format = "dd.MM.yyyy";
-            LoadComboAddresses();
+            StyleHelper.ApplyGridStyle(gridLectors);
+            SetButtonStyle(this);
+
+            LoadComboFaculties();
+            LoadComboFilterByFaculty();
+
+            buttPrevious.Enabled = false;
+            buttNext.Enabled = (lectors.Count > pageSize * pageNr);
+        }
+        private void LoadComboFilterByFaculty()
+        {
+            cbFilterByFaculty.DataSource = null;
+            List<Faculty> faculties = factory.GetFaculties();
+            cbFilterByFaculty.DataSource = faculties;
+            cbFilterByFaculty.DisplayMember = "Name";
+            cbFilterByFaculty.ValueMember = "ID_faculty";
+            cbFilterByFaculty.SelectedIndex = -1;
+        }
+        private void SetButtonStyle(Control parent)
+        {
+            foreach (Control control in parent.Controls)
+            {
+                if (control is Button button)
+                {
+                    StyleHelper.ApplyButtonStyle(button);
+                }
+                if (control.HasChildren)
+                {
+                    SetButtonStyle(control);
+                }
+            }
         }
         private void Lector_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (!_universityForm.Visible)
                 Application.Exit();
         }
-        private void picLectToUni_Click(object sender, EventArgs e)
+        private void LoadComboFaculties()
         {
-            _universityForm.Location = this.Location;
-            _universityForm.Size = this.Size;
-            _universityForm.Show();
-            this.Close();
-        }
-        private void LoadComboAddresses()
-        {
-            cbLectorAddress.DataSource = null;
-            addresses = factory.GetAddresses();
-            List<AddressView> addressViews = addresses.Select(a => new AddressView
-            {
-                ID_address = a.ID_address,
-                Region = a.Region,
-                City = a.City,
-                Street = a.Street,
-                Number = a.Number
-            }).ToList();
-            cbLectorAddress.DataSource = addressViews;
-            cbLectorAddress.DisplayMember = "FullAddress";
-            cbLectorAddress.ValueMember = "ID_address";
-            cbLectorAddress.SelectedIndex = -1;
+            cbLectorFaculty.DataSource = null;
+            List<Faculty> faculties = factory.GetFaculties();
+            cbLectorFaculty.DataSource = faculties;
+            cbLectorFaculty.DisplayMember = "Name";
+            cbLectorFaculty.ValueMember = "ID_faculty";
+            cbLectorFaculty.SelectedIndex = -1;
         }
         private void buttLectorReg_Click(object sender, EventArgs e)
         {
-            long? selectedAddressId = null;
-            if (cbLectorAddress.SelectedValue != null && cbLectorAddress.SelectedValue is long id && id > 0)
-            {
-                selectedAddressId = id;
-            }
             Lector lector = new Lector
             {
                 Name = txtLectorName.Text,
                 Surname = txtLectorSurn.Text,
                 Phone = txtPhone.Text,
                 HireDate = datePickHire.Value,
-                ID_address = selectedAddressId
+                ID_faculty = (long?)cbLectorFaculty.SelectedValue
             };
             List<string> errors = validation.LectorValidation(lector);
             if (errors.Count == 0)
@@ -119,28 +133,18 @@ namespace EntityExample.Forms
 
             if (!long.TryParse(Convert.ToString(selectedRow.Cells["ID_lector"].Value), out var lectorId))
             {
-                cbLectorAddress.SelectedIndex = -1;
+                cbLectorFaculty.SelectedIndex = -1;
                 return;
             }
 
             Lector lector = factory.GetLectorById(lectorId);
-            if (lector?.ID_address == null)
+            if (lector != null && lector.ID_faculty.HasValue)
             {
-                cbLectorAddress.SelectedIndex = -1;
-                return;
+                cbLectorFaculty.SelectedValue = lector.ID_faculty.Value;
             }
-            var addressId = lector.ID_address.Value;
-            var currentAddresses = cbLectorAddress.DataSource as IEnumerable<AddressView>;
-
-            if (currentAddresses == null || !currentAddresses.Any(a => a.ID_address == addressId))
-                LoadComboAddresses();
-            try
+            else
             {
-                cbLectorAddress.SelectedValue = addressId;
-            }
-            catch
-            {
-                cbLectorAddress.SelectedIndex = -1;
+                cbLectorFaculty.SelectedIndex = -1;
             }
         }
         private void label6_Click(object sender, EventArgs e)
@@ -200,8 +204,8 @@ namespace EntityExample.Forms
             lectorToUpdate.Name = txtLectorName.Text;
             lectorToUpdate.Surname = txtLectorSurn.Text;
             lectorToUpdate.Phone = txtPhone.Text;
+            lectorToUpdate.ID_faculty = (long?)cbLectorFaculty.SelectedValue;
             lectorToUpdate.HireDate = datePickHire.Value;
-            lectorToUpdate.ID_address = (long?)cbLectorAddress.SelectedValue;
             List<string> errors = validation.LectorValidation(lectorToUpdate);
             if (errors.Count == 0)
             {
@@ -222,7 +226,67 @@ namespace EntityExample.Forms
         {
             helper.ClearForm(Controls);
             factory.DeleteAddress(factory.GetLastInsertedAddressId());
-            LoadComboAddresses();
+            LoadComboFaculties();
+        }
+        private void butLectorBack_Click(object sender, EventArgs e)
+        {
+            _universityForm.Location = this.Location;
+            _universityForm.Size = this.Size;
+            _universityForm.Show();
+            this.Close();
+        }
+        private void cbFilterByFaculty_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            selectedFacultyName = cbFilterByFaculty.Text;
+            ApplyFilters();
+        }
+        private void textSearchLectors_TextChanged(object sender, EventArgs e)
+        {
+            searchText = textSearchLectors.Text;
+            ApplyFilters();
+        }
+        private void ApplyFilters()
+        {
+            IEnumerable<LectorView> query = lectors;
+            if (!string.IsNullOrEmpty(selectedFacultyName))
+            {
+                List<long> facultyIds = factory.GetFaculties()
+                    .Where(f => f.Name.IndexOf(selectedFacultyName, StringComparison.OrdinalIgnoreCase) >= 0)
+                    .Select(f => f.ID_faculty)
+                    .ToList();
+                query = query.Where(l => l.FacultyName != null && l.FacultyName.IndexOf(selectedFacultyName, StringComparison.OrdinalIgnoreCase) >= 0);
+            }
+            if (!string.IsNullOrEmpty(searchText))
+            {
+                query = query.Where(l =>
+                    l.Name != null && l.Name.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    l.Surname != null && l.Surname.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    l.Phone != null && l.Phone.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    l.FacultyName != null && l.FacultyName.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    (l.HireDate.HasValue && l.HireDate.Value.ToString("dd.MM.yyyy").IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0)
+                );
+            }
+            filteredLectors = query.ToList();
+            pageNr = 1;
+            Paging();
+            helper.ReloadGrid(gridLectors, helper.Paging(filteredLectors, pageNr, pageSize));
+        }
+        private void Paging()
+        {
+            List<LectorView> listObject = filteredLectors.Count > 0 ? filteredLectors : lectors;
+            buttPrevious.Enabled = (pageNr > 1);
+            buttNext.Enabled = (listObject.Count > pageSize * pageNr);
+            helper.ReloadGrid(gridLectors, helper.Paging(listObject, pageNr, pageSize));
+        }
+        private void buttPrevious_Click(object sender, EventArgs e)
+        {
+            pageNr--;
+            Paging();
+        }
+        private void buttNext_Click(object sender, EventArgs e)
+        {
+            pageNr++;
+            Paging();
         }
     }
 }

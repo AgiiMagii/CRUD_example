@@ -251,6 +251,7 @@
             // 
             // flowLayoutPanel1
             // 
+            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanel1.Controls.Add(this.buttDelete);
             this.flowLayoutPanel1.Controls.Add(this.buttRegister);
             this.flowLayoutPanel1.Controls.Add(this.buttUpdate);

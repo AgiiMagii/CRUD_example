@@ -14,15 +14,19 @@ namespace EntityExample
     
     public partial class Lesson
     {
-        public long ID_lesson { get; set; }
-        public Nullable<long> ID_subject { get; set; }
-        public Nullable<long> ID_lector { get; set; }
-        public Nullable<long> ID_course { get; set; }
-        public Nullable<int> RoomNr { get; set; }
-        public Nullable<System.DateTime> LessonDate { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Lesson()
+        {
+            this.Course = new HashSet<Course>();
+            this.Subject = new HashSet<Subject>();
+        }
     
-        public virtual Course Course { get; set; }
-        public virtual Lector Lector { get; set; }
-        public virtual Subject Subject { get; set; }
+        public long ID_lesson { get; set; }
+        public string LessonName { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Course> Course { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Subject> Subject { get; set; }
     }
 }

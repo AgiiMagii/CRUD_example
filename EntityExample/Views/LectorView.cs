@@ -13,7 +13,6 @@ namespace EntityExample.Views
         public string Surname { get; set; }
         public string Phone { get; set; }
         public Nullable<System.DateTime> HireDate { get; set; }
-        public Nullable<long> ID_address { get; set; }
-
+        public string FacultyName { get; set; }
     }
 }

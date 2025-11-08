@@ -18,6 +18,7 @@ namespace EntityExample
         public Faculty()
         {
             this.Course = new HashSet<Course>();
+            this.Lector = new HashSet<Lector>();
         }
     
         public long ID_faculty { get; set; }
@@ -25,7 +26,10 @@ namespace EntityExample
         public Nullable<long> ID_address { get; set; }
         public Nullable<System.DateTime> ANNO { get; set; }
     
+        public virtual Address Address { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Course> Course { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Lector> Lector { get; set; }
     }
 }

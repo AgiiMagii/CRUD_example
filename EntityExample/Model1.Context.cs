@@ -28,12 +28,12 @@ namespace EntityExample
         }
     
         public virtual DbSet<Address> Address { get; set; }
-        public virtual DbSet<Course> Course { get; set; }
-        public virtual DbSet<Faculty> Faculty { get; set; }
-        public virtual DbSet<Lector> Lector { get; set; }
-        public virtual DbSet<Lesson> Lesson { get; set; }
         public virtual DbSet<Student> Student { get; set; }
         public virtual DbSet<Subject> Subject { get; set; }
+        public virtual DbSet<Lector> Lector { get; set; }
+        public virtual DbSet<Course> Course { get; set; }
+        public virtual DbSet<Faculty> Faculty { get; set; }
+        public virtual DbSet<Lesson> Lesson { get; set; }
     
         public virtual ObjectResult<GetStudentsByFaculty_Result> GetStudentsByFaculty(string faculty)
         {

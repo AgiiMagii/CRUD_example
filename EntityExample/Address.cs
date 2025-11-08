@@ -17,7 +17,7 @@ namespace EntityExample
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Address()
         {
-            this.Lector = new HashSet<Lector>();
+            this.Faculty = new HashSet<Faculty>();
         }
     
         public long ID_address { get; set; }
@@ -27,6 +27,6 @@ namespace EntityExample
         public string Number { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Lector> Lector { get; set; }
+        public virtual ICollection<Faculty> Faculty { get; set; }
     }
 }

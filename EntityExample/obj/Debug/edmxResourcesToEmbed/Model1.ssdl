@@ -19,6 +19,14 @@
     <Property Name="Name" Type="nvarchar" MaxLength="50" />
     <Property Name="DefaultScholarship" Type="decimal" Precision="4" Scale="0" />
   </EntityType>
+  <EntityType Name="Course_lesson">
+    <Key>
+      <PropertyRef Name="ID_course" />
+      <PropertyRef Name="ID_lesson" />
+    </Key>
+    <Property Name="ID_course" Type="bigint" Nullable="false" />
+    <Property Name="ID_lesson" Type="bigint" Nullable="false" />
+  </EntityType>
   <EntityType Name="Faculty">
     <Key>
       <PropertyRef Name="ID_faculty" />
@@ -36,7 +44,7 @@
     <Property Name="Name" Type="nvarchar" MaxLength="50" />
     <Property Name="Surname" Type="nvarchar" MaxLength="50" />
     <Property Name="Phone" Type="nvarchar" MaxLength="50" />
-    <Property Name="ID_address" Type="bigint" />
+    <Property Name="ID_faculty" Type="bigint" />
     <Property Name="HireDate" Type="date" />
   </EntityType>
   <EntityType Name="Lesson">
@@ -44,11 +52,15 @@
       <PropertyRef Name="ID_lesson" />
     </Key>
     <Property Name="ID_lesson" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ID_subject" Type="bigint" />
-    <Property Name="ID_lector" Type="bigint" />
-    <Property Name="ID_course" Type="bigint" />
-    <Property Name="RoomNr" Type="int" />
-    <Property Name="LessonDate" Type="datetime" />
+    <Property Name="LessonName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Lesson_subject">
+    <Key>
+      <PropertyRef Name="ID_lesson" />
+      <PropertyRef Name="ID_subject" />
+    </Key>
+    <Property Name="ID_lesson" Type="bigint" Nullable="false" />
+    <Property Name="ID_subject" Type="bigint" Nullable="false" />
   </EntityType>
   <EntityType Name="Student">
     <Key>
@@ -84,50 +96,74 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Lector_Address">
-    <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
-    <End Role="Lector" Type="Self.Lector" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Address">
-        <PropertyRef Name="ID_address" />
-      </Principal>
-      <Dependent Role="Lector">
-        <PropertyRef Name="ID_address" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Lesson_Course">
-    <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
-    <End Role="Lesson" Type="Self.Lesson" Multiplicity="*" />
+  <Association Name="FK_Course_lesson_Course">
+    <End Role="Course" Type="Self.Course" Multiplicity="1" />
+    <End Role="Course_lesson" Type="Self.Course_lesson" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Course">
         <PropertyRef Name="ID_course" />
       </Principal>
-      <Dependent Role="Lesson">
+      <Dependent Role="Course_lesson">
         <PropertyRef Name="ID_course" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Lesson_Lector">
-    <End Role="Lector" Type="Self.Lector" Multiplicity="0..1" />
-    <End Role="Lesson" Type="Self.Lesson" Multiplicity="*" />
+  <Association Name="FK_Course_lesson_Lesson">
+    <End Role="Lesson" Type="Self.Lesson" Multiplicity="1" />
+    <End Role="Course_lesson" Type="Self.Course_lesson" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Lector">
-        <PropertyRef Name="ID_lector" />
+      <Principal Role="Lesson">
+        <PropertyRef Name="ID_lesson" />
       </Principal>
-      <Dependent Role="Lesson">
-        <PropertyRef Name="ID_lector" />
+      <Dependent Role="Course_lesson">
+        <PropertyRef Name="ID_lesson" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Lesson_Subject">
-    <End Role="Subject" Type="Self.Subject" Multiplicity="0..1" />
-    <End Role="Lesson" Type="Self.Lesson" Multiplicity="*" />
+  <Association Name="FK_Faculty_Address">
+    <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+    <End Role="Faculty" Type="Self.Faculty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="ID_address" />
+      </Principal>
+      <Dependent Role="Faculty">
+        <PropertyRef Name="ID_address" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lector_Faculty">
+    <End Role="Faculty" Type="Self.Faculty" Multiplicity="0..1" />
+    <End Role="Lector" Type="Self.Lector" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Faculty">
+        <PropertyRef Name="ID_faculty" />
+      </Principal>
+      <Dependent Role="Lector">
+        <PropertyRef Name="ID_faculty" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lesson_subject_Lesson">
+    <End Role="Lesson" Type="Self.Lesson" Multiplicity="1" />
+    <End Role="Lesson_subject" Type="Self.Lesson_subject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lesson">
+        <PropertyRef Name="ID_lesson" />
+      </Principal>
+      <Dependent Role="Lesson_subject">
+        <PropertyRef Name="ID_lesson" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lesson_subject_Subject">
+    <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
+    <End Role="Lesson_subject" Type="Self.Lesson_subject" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Subject">
         <PropertyRef Name="ID_subject" />
       </Principal>
-      <Dependent Role="Lesson">
+      <Dependent Role="Lesson_subject">
         <PropertyRef Name="ID_subject" />
       </Dependent>
     </ReferentialConstraint>
@@ -153,30 +189,40 @@
   <EntityContainer Name="UniversityExampleModelStoreContainer">
     <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Course_lesson" EntityType="Self.Course_lesson" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Faculty" EntityType="Self.Faculty" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Lector" EntityType="Self.Lector" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Lesson" EntityType="Self.Lesson" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Lesson_subject" EntityType="Self.Lesson_subject" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Subject" EntityType="Self.Subject" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Course_Faculty" Association="Self.FK_Course_Faculty">
       <End Role="Faculty" EntitySet="Faculty" />
       <End Role="Course" EntitySet="Course" />
     </AssociationSet>
-    <AssociationSet Name="FK_Lector_Address" Association="Self.FK_Lector_Address">
-      <End Role="Address" EntitySet="Address" />
-      <End Role="Lector" EntitySet="Lector" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Lesson_Course" Association="Self.FK_Lesson_Course">
+    <AssociationSet Name="FK_Course_lesson_Course" Association="Self.FK_Course_lesson_Course">
       <End Role="Course" EntitySet="Course" />
-      <End Role="Lesson" EntitySet="Lesson" />
+      <End Role="Course_lesson" EntitySet="Course_lesson" />
     </AssociationSet>
-    <AssociationSet Name="FK_Lesson_Lector" Association="Self.FK_Lesson_Lector">
+    <AssociationSet Name="FK_Course_lesson_Lesson" Association="Self.FK_Course_lesson_Lesson">
+      <End Role="Lesson" EntitySet="Lesson" />
+      <End Role="Course_lesson" EntitySet="Course_lesson" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Faculty_Address" Association="Self.FK_Faculty_Address">
+      <End Role="Address" EntitySet="Address" />
+      <End Role="Faculty" EntitySet="Faculty" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lector_Faculty" Association="Self.FK_Lector_Faculty">
+      <End Role="Faculty" EntitySet="Faculty" />
       <End Role="Lector" EntitySet="Lector" />
-      <End Role="Lesson" EntitySet="Lesson" />
     </AssociationSet>
-    <AssociationSet Name="FK_Lesson_Subject" Association="Self.FK_Lesson_Subject">
-      <End Role="Subject" EntitySet="Subject" />
+    <AssociationSet Name="FK_Lesson_subject_Lesson" Association="Self.FK_Lesson_subject_Lesson">
       <End Role="Lesson" EntitySet="Lesson" />
+      <End Role="Lesson_subject" EntitySet="Lesson_subject" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lesson_subject_Subject" Association="Self.FK_Lesson_subject_Subject">
+      <End Role="Subject" EntitySet="Subject" />
+      <End Role="Lesson_subject" EntitySet="Lesson_subject" />
     </AssociationSet>
     <AssociationSet Name="FK_Student_Course" Association="Self.FK_Student_Course">
       <End Role="Course" EntitySet="Course" />
