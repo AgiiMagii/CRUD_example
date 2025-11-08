@@ -22,6 +22,7 @@
           <Property Name="ID_course" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ID_faculty" Type="bigint" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="DefaultScholarship" Type="decimal" Precision="4" Scale="0" />
         </EntityType>
         <EntityType Name="Faculty">
           <Key>
@@ -212,6 +213,7 @@
           <NavigationProperty Name="Faculty" Relationship="Self.FK_Course_Faculty" FromRole="Course" ToRole="Faculty" />
           <NavigationProperty Name="Lesson" Relationship="Self.FK_Lesson_Course" FromRole="Course" ToRole="Lesson" />
           <NavigationProperty Name="Student" Relationship="Self.FK_Student_Course" FromRole="Course" ToRole="Student" />
+          <Property Name="DefaultScholarship" Type="Decimal" Precision="4" Scale="0" />
         </EntityType>
         <EntityType Name="Faculty">
           <Key>
@@ -382,7 +384,7 @@
           <Parameter Name="faculty" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetStudentsByFilter" ReturnType="Collection(UniversityExampleModel.GetStudentsByFilter_Result)">
-            <Parameter Name="inputValue" Mode="In" Type="String" />
+          <Parameter Name="inputValue" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="GetStudentsByFaculty_Result">
@@ -422,6 +424,7 @@
           <EntitySetMapping Name="Course">
             <EntityTypeMapping TypeName="UniversityExampleModel.Course">
               <MappingFragment StoreEntitySet="Course">
+                <ScalarProperty Name="DefaultScholarship" ColumnName="DefaultScholarship" />
                 <ScalarProperty Name="ID_course" ColumnName="ID_course" />
                 <ScalarProperty Name="ID_faculty" ColumnName="ID_faculty" />
                 <ScalarProperty Name="Name" ColumnName="Name" />

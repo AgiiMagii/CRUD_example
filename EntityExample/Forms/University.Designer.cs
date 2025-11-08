@@ -29,113 +29,58 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fm_University));
-            this.groupNav = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.picToFaculties = new System.Windows.Forms.PictureBox();
-            this.picToStudents = new System.Windows.Forms.PictureBox();
-            this.picToLectors = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.groupNav.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picToFaculties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picToStudents)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picToLectors)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.butToStudents = new System.Windows.Forms.Button();
+            this.butToLectors = new System.Windows.Forms.Button();
+            this.butToFaculties = new System.Windows.Forms.Button();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // groupNav
+            // butToStudents
             // 
-            this.groupNav.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.groupNav.Controls.Add(this.label3);
-            this.groupNav.Controls.Add(this.label2);
-            this.groupNav.Controls.Add(this.label1);
-            this.groupNav.Controls.Add(this.picToFaculties);
-            this.groupNav.Controls.Add(this.picToStudents);
-            this.groupNav.Controls.Add(this.picToLectors);
-            this.groupNav.Location = new System.Drawing.Point(12, 12);
-            this.groupNav.Name = "groupNav";
-            this.groupNav.Size = new System.Drawing.Size(776, 161);
-            this.groupNav.TabIndex = 3;
-            this.groupNav.TabStop = false;
-            this.groupNav.Text = "Navigate";
+            this.butToStudents.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.butToStudents.Location = new System.Drawing.Point(3, 3);
+            this.butToStudents.Name = "butToStudents";
+            this.butToStudents.Size = new System.Drawing.Size(188, 46);
+            this.butToStudents.TabIndex = 4;
+            this.butToStudents.Text = "Students";
+            this.butToStudents.UseVisualStyleBackColor = true;
+            this.butToStudents.Click += new System.EventHandler(this.butToStudents_Click);
             // 
-            // label3
+            // butToLectors
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(316, 141);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(146, 13);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "FACULTIES AND COURSES";
+            this.butToLectors.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.butToLectors.Location = new System.Drawing.Point(3, 55);
+            this.butToLectors.Name = "butToLectors";
+            this.butToLectors.Size = new System.Drawing.Size(188, 46);
+            this.butToLectors.TabIndex = 5;
+            this.butToLectors.Text = "Lectors";
+            this.butToLectors.UseVisualStyleBackColor = true;
+            this.butToLectors.Click += new System.EventHandler(this.butToLectors_Click);
             // 
-            // label2
+            // butToFaculties
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(209, 141);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 13);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "LECTORS";
+            this.butToFaculties.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.butToFaculties.Location = new System.Drawing.Point(3, 107);
+            this.butToFaculties.Name = "butToFaculties";
+            this.butToFaculties.Size = new System.Drawing.Size(188, 46);
+            this.butToFaculties.TabIndex = 6;
+            this.butToFaculties.Text = "Faculties and courses";
+            this.butToFaculties.UseVisualStyleBackColor = true;
+            this.butToFaculties.Click += new System.EventHandler(this.butToFaculties_Click);
             // 
-            // label1
+            // flowLayoutPanel1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(50, 141);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "STUDENTS";
-            // 
-            // picToFaculties
-            // 
-            this.picToFaculties.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.picToFaculties.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.picToFaculties.Image = global::EntityExample.Properties.Resources.University_128;
-            this.picToFaculties.Location = new System.Drawing.Point(319, 19);
-            this.picToFaculties.Name = "picToFaculties";
-            this.picToFaculties.Size = new System.Drawing.Size(133, 119);
-            this.picToFaculties.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picToFaculties.TabIndex = 4;
-            this.picToFaculties.TabStop = false;
-            this.picToFaculties.Click += new System.EventHandler(this.picToFaculties_Click_1);
-            // 
-            // picToStudents
-            // 
-            this.picToStudents.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.picToStudents.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.picToStudents.Image = global::EntityExample.Properties.Resources.Student_256;
-            this.picToStudents.Location = new System.Drawing.Point(16, 19);
-            this.picToStudents.Name = "picToStudents";
-            this.picToStudents.Size = new System.Drawing.Size(133, 119);
-            this.picToStudents.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picToStudents.TabIndex = 1;
-            this.picToStudents.TabStop = false;
-            this.picToStudents.Click += new System.EventHandler(this.picToStudents_Click);
-            // 
-            // picToLectors
-            // 
-            this.picToLectors.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.picToLectors.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.picToLectors.Image = global::EntityExample.Properties.Resources.Professor_128;
-            this.picToLectors.Location = new System.Drawing.Point(168, 19);
-            this.picToLectors.Name = "picToLectors";
-            this.picToLectors.Size = new System.Drawing.Size(132, 119);
-            this.picToLectors.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picToLectors.TabIndex = 2;
-            this.picToLectors.TabStop = false;
-            this.picToLectors.Click += new System.EventHandler(this.picToLectors_Click);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox2.Image = global::EntityExample.Properties.Resources.Designer;
-            this.pictureBox2.Location = new System.Drawing.Point(12, 190);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(452, 248);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 4;
-            this.pictureBox2.TabStop = false;
+            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.flowLayoutPanel1.Controls.Add(this.butToStudents);
+            this.flowLayoutPanel1.Controls.Add(this.butToLectors);
+            this.flowLayoutPanel1.Controls.Add(this.butToFaculties);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(22, 0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(213, 450);
+            this.flowLayoutPanel1.TabIndex = 7;
             // 
             // fm_University
             // 
@@ -143,30 +88,20 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.groupNav);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "fm_University";
             this.Text = "University";
-            this.groupNav.ResumeLayout(false);
-            this.groupNav.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picToFaculties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picToStudents)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picToLectors)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.PictureBox picToStudents;
-        private System.Windows.Forms.PictureBox picToLectors;
-        private System.Windows.Forms.GroupBox groupNav;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox picToFaculties;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button butToStudents;
+        private System.Windows.Forms.Button butToLectors;
+        private System.Windows.Forms.Button butToFaculties;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }
 

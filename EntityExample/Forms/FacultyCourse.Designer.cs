@@ -34,13 +34,13 @@
             this.flPanelFaculties = new System.Windows.Forms.FlowLayoutPanel();
             this.gridCourses = new System.Windows.Forms.DataGridView();
             this.gbCourses = new System.Windows.Forms.GroupBox();
+            this.labelAccept = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.buttSetScholar = new System.Windows.Forms.Button();
             this.numScholarship = new System.Windows.Forms.NumericUpDown();
             this.gridSubjects = new System.Windows.Forms.DataGridView();
             this.txtCourseName = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblDeleteCourse = new System.Windows.Forms.Label();
             this.buttUpdateCourse = new System.Windows.Forms.Button();
             this.buttAddCourse = new System.Windows.Forms.Button();
             this.listViewLectors = new System.Windows.Forms.ListView();
@@ -49,7 +49,6 @@
             this.buttAddFaculty = new System.Windows.Forms.Button();
             this.labelEditAddress = new System.Windows.Forms.Label();
             this.labelClearFacUI = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -69,6 +68,8 @@
             // 
             // gbFaculties
             // 
+            this.gbFaculties.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.gbFaculties.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.gbFaculties.Controls.Add(this.flPanelFaculties);
             this.gbFaculties.Location = new System.Drawing.Point(14, 12);
@@ -80,6 +81,8 @@
             // 
             // flPanelFaculties
             // 
+            this.flPanelFaculties.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.flPanelFaculties.AutoScroll = true;
             this.flPanelFaculties.BackColor = System.Drawing.Color.WhiteSmoke;
             this.flPanelFaculties.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -93,55 +96,57 @@
             this.gridCourses.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.gridCourses.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.gridCourses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridCourses.Location = new System.Drawing.Point(15, 75);
+            this.gridCourses.Location = new System.Drawing.Point(6, 83);
             this.gridCourses.Name = "gridCourses";
-            this.gridCourses.Size = new System.Drawing.Size(153, 107);
+            this.gridCourses.Size = new System.Drawing.Size(172, 130);
             this.gridCourses.TabIndex = 2;
             this.gridCourses.SelectionChanged += new System.EventHandler(this.gridCourses_SelectionChanged);
             // 
             // gbCourses
             // 
+            this.gbCourses.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gbCourses.BackColor = System.Drawing.Color.Silver;
+            this.gbCourses.Controls.Add(this.labelAccept);
             this.gbCourses.Controls.Add(this.label7);
-            this.gbCourses.Controls.Add(this.buttSetScholar);
             this.gbCourses.Controls.Add(this.numScholarship);
             this.gbCourses.Controls.Add(this.gridSubjects);
             this.gbCourses.Controls.Add(this.txtCourseName);
             this.gbCourses.Controls.Add(this.label6);
-            this.gbCourses.Controls.Add(this.label4);
+            this.gbCourses.Controls.Add(this.lblDeleteCourse);
             this.gbCourses.Controls.Add(this.buttUpdateCourse);
             this.gbCourses.Controls.Add(this.buttAddCourse);
             this.gbCourses.Controls.Add(this.gridCourses);
-            this.gbCourses.Location = new System.Drawing.Point(8, 223);
+            this.gbCourses.Location = new System.Drawing.Point(8, 196);
             this.gbCourses.Name = "gbCourses";
-            this.gbCourses.Size = new System.Drawing.Size(597, 192);
+            this.gbCourses.Size = new System.Drawing.Size(597, 219);
             this.gbCourses.TabIndex = 3;
             this.gbCourses.TabStop = false;
             this.gbCourses.Text = "Courses";
             // 
+            // labelAccept
+            // 
+            this.labelAccept.AutoSize = true;
+            this.labelAccept.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAccept.Location = new System.Drawing.Point(310, 188);
+            this.labelAccept.Name = "labelAccept";
+            this.labelAccept.Size = new System.Drawing.Size(33, 25);
+            this.labelAccept.TabIndex = 24;
+            this.labelAccept.Text = "✔";
+            this.labelAccept.Click += new System.EventHandler(this.labelAccept_Click);
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(179, 83);
+            this.label7.Location = new System.Drawing.Point(186, 177);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(62, 13);
             this.label7.TabIndex = 23;
             this.label7.Text = "Scholarship";
             // 
-            // buttSetScholar
-            // 
-            this.buttSetScholar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttSetScholar.Location = new System.Drawing.Point(303, 97);
-            this.buttSetScholar.Name = "buttSetScholar";
-            this.buttSetScholar.Size = new System.Drawing.Size(22, 23);
-            this.buttSetScholar.TabIndex = 22;
-            this.buttSetScholar.Text = "✔";
-            this.buttSetScholar.UseVisualStyleBackColor = true;
-            this.buttSetScholar.Click += new System.EventHandler(this.buttSetScholar_Click);
-            // 
             // numScholarship
             // 
-            this.numScholarship.Location = new System.Drawing.Point(177, 99);
+            this.numScholarship.Location = new System.Drawing.Point(184, 193);
             this.numScholarship.Maximum = new decimal(new int[] {
             300,
             0,
@@ -153,10 +158,11 @@
             // 
             // gridSubjects
             // 
+            this.gridSubjects.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.gridSubjects.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridSubjects.Location = new System.Drawing.Point(341, 32);
+            this.gridSubjects.Location = new System.Drawing.Point(399, 45);
             this.gridSubjects.Name = "gridSubjects";
-            this.gridSubjects.Size = new System.Drawing.Size(240, 150);
+            this.gridSubjects.Size = new System.Drawing.Size(182, 150);
             this.gridSubjects.TabIndex = 20;
             // 
             // txtCourseName
@@ -175,22 +181,23 @@
             this.label6.TabIndex = 18;
             this.label6.Text = "Course name";
             // 
-            // label4
+            // lblDeleteCourse
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(264, 42);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(33, 25);
-            this.label4.TabIndex = 16;
-            this.label4.Text = "🗑️";
+            this.lblDeleteCourse.AutoSize = true;
+            this.lblDeleteCourse.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDeleteCourse.Location = new System.Drawing.Point(271, 16);
+            this.lblDeleteCourse.Name = "lblDeleteCourse";
+            this.lblDeleteCourse.Size = new System.Drawing.Size(33, 25);
+            this.lblDeleteCourse.TabIndex = 16;
+            this.lblDeleteCourse.Text = "🗑️";
+            this.lblDeleteCourse.Click += new System.EventHandler(this.lblDeleteCourse_Click);
             // 
             // buttUpdateCourse
             // 
             this.buttUpdateCourse.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.buttUpdateCourse.Location = new System.Drawing.Point(174, 45);
+            this.buttUpdateCourse.Location = new System.Drawing.Point(180, 45);
             this.buttUpdateCourse.Name = "buttUpdateCourse";
-            this.buttUpdateCourse.Size = new System.Drawing.Size(75, 24);
+            this.buttUpdateCourse.Size = new System.Drawing.Size(85, 24);
             this.buttUpdateCourse.TabIndex = 5;
             this.buttUpdateCourse.Text = "Update";
             this.buttUpdateCourse.UseVisualStyleBackColor = false;
@@ -201,7 +208,7 @@
             this.buttAddCourse.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttAddCourse.Location = new System.Drawing.Point(93, 45);
             this.buttAddCourse.Name = "buttAddCourse";
-            this.buttAddCourse.Size = new System.Drawing.Size(75, 24);
+            this.buttAddCourse.Size = new System.Drawing.Size(85, 24);
             this.buttAddCourse.TabIndex = 4;
             this.buttAddCourse.Text = "Add";
             this.buttAddCourse.UseVisualStyleBackColor = false;
@@ -219,13 +226,15 @@
             // 
             // gbFacultyInfo
             // 
+            this.gbFacultyInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gbFacultyInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.gbFacultyInfo.Controls.Add(this.buttUpdateFac);
             this.gbFacultyInfo.Controls.Add(this.buttAddFaculty);
             this.gbFacultyInfo.Controls.Add(this.labelEditAddress);
             this.gbFacultyInfo.Controls.Add(this.listViewLectors);
             this.gbFacultyInfo.Controls.Add(this.labelClearFacUI);
-            this.gbFacultyInfo.Controls.Add(this.label5);
             this.gbFacultyInfo.Controls.Add(this.label3);
             this.gbFacultyInfo.Controls.Add(this.label2);
             this.gbFacultyInfo.Controls.Add(this.label1);
@@ -243,9 +252,9 @@
             // buttUpdateFac
             // 
             this.buttUpdateFac.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.buttUpdateFac.Location = new System.Drawing.Point(182, 165);
+            this.buttUpdateFac.Location = new System.Drawing.Point(188, 165);
             this.buttUpdateFac.Name = "buttUpdateFac";
-            this.buttUpdateFac.Size = new System.Drawing.Size(75, 23);
+            this.buttUpdateFac.Size = new System.Drawing.Size(85, 23);
             this.buttUpdateFac.TabIndex = 21;
             this.buttUpdateFac.Text = "Update";
             this.buttUpdateFac.UseVisualStyleBackColor = false;
@@ -256,7 +265,7 @@
             this.buttAddFaculty.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttAddFaculty.Location = new System.Drawing.Point(101, 165);
             this.buttAddFaculty.Name = "buttAddFaculty";
-            this.buttAddFaculty.Size = new System.Drawing.Size(75, 23);
+            this.buttAddFaculty.Size = new System.Drawing.Size(85, 23);
             this.buttAddFaculty.TabIndex = 20;
             this.buttAddFaculty.Text = "Add";
             this.buttAddFaculty.UseVisualStyleBackColor = false;
@@ -283,16 +292,6 @@
             this.labelClearFacUI.TabIndex = 18;
             this.labelClearFacUI.Text = "🗋";
             this.labelClearFacUI.Click += new System.EventHandler(this.labelClearFacUI_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(272, 165);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(33, 25);
-            this.label5.TabIndex = 15;
-            this.label5.Text = "🗑️";
             // 
             // label3
             // 
@@ -347,6 +346,7 @@
             // 
             // picFacToUni
             // 
+            this.picFacToUni.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.picFacToUni.BackColor = System.Drawing.Color.WhiteSmoke;
             this.picFacToUni.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.picFacToUni.Image = global::EntityExample.Properties.Resources.Ionic_Ionicons_Arrow_back_128;
@@ -405,20 +405,19 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label labelClearFacUI;
         private System.Windows.Forms.Label labelEditAddress;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Button buttAddFaculty;
         private System.Windows.Forms.Button buttUpdateFac;
         private System.Windows.Forms.Button buttAddCourse;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblDeleteCourse;
         private System.Windows.Forms.Button buttUpdateCourse;
         private System.Windows.Forms.TextBox txtCourseName;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridView gridSubjects;
-        private System.Windows.Forms.Button buttSetScholar;
         private System.Windows.Forms.NumericUpDown numScholarship;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label labelAccept;
     }
 }

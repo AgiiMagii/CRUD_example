@@ -14,8 +14,6 @@ namespace EntityExample.Forms
 {
     public partial class fm_FacultyCourse : Form
     {
-        // TODO: Implement scholarship management for courses, because we can't leave students without scholarships on registration.
-
         Factory factory = new Factory();
         Helper helper = new Helper();
         Validation validation = new Validation();
@@ -34,6 +32,22 @@ namespace EntityExample.Forms
         {
             LoadFacultyButtons();
             LoadComboFacYear();
+            StyleHelper.ApplyGridStyle(gridCourses);
+            SetButtonStyle(this);
+        }
+        private void SetButtonStyle(Control parent)
+        {
+            foreach (Control control in parent.Controls)
+            {
+                if (control is Button button)
+                {
+                    StyleHelper.ApplyButtonStyle(button);
+                }
+                if (control.HasChildren)
+                {
+                    SetButtonStyle(control);
+                }
+            }
         }
         private void LoadComboFacYear()
         {
@@ -262,8 +276,8 @@ namespace EntityExample.Forms
                 Name = txtCourseName.Text,
                 ID_faculty = selectedFaculty.ID_faculty
             };
-            List<string> errors = validation.CourseValidation(course);
-            if (errors != null)
+            List<string> errors = validation.CourseValidation(course, factory.GetCoursesByFacultyId(selectedFaculty.ID_faculty));
+            if (errors.Count == 0)
             {
                 try
                 {
@@ -274,10 +288,9 @@ namespace EntityExample.Forms
                 }
                 catch (Exception)
                 {
-                    throw;
+                    MessageBox.Show("Error adding course.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
         }
         private void buttUpdateCourse_Click(object sender, EventArgs e)
         {
@@ -293,7 +306,7 @@ namespace EntityExample.Forms
             if (courseToUpdate != null && selectedRowIndex != -1)
             {
                 courseToUpdate.Name = txtCourseName.Text;
-                List<string> errors = validation.CourseValidation(courseToUpdate);
+                List<string> errors = validation.CourseValidation(courseToUpdate, factory.GetCoursesByFacultyId(selectedFaculty.ID_faculty));
                 if (errors != null)
                 {
                     try
@@ -319,7 +332,7 @@ namespace EntityExample.Forms
                 txtCourseName.Text = selectedCourse.Name;
             }
         }
-        private void buttSetScholar_Click(object sender, EventArgs e)
+        private void labelAccept_Click(object sender, EventArgs e)
         {
             if (selectedCourse == null)
             {
@@ -332,12 +345,45 @@ namespace EntityExample.Forms
             try
             {
                 factory.AddScholarship(selectedCourse.ID_course, scholarshipAmount);
+                txtCourseName.Clear();
+                numScholarship.Value = 0;
                 MessageBox.Show("Scholarship set successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error setting scholarship: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        private void lblDeleteCourse_Click(object sender, EventArgs e)
+        {
+            if (selectedCourse == null)
+            {
+                MessageBox.Show("Please select a course to delete.", "No Course Selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            List<Student> studentsInCourse = factory.GetStudentsByCourseID(selectedCourse.ID_course);
+            if (studentsInCourse != null && studentsInCourse.Count > 0)
+            {
+                MessageBox.Show("Cannot delete the course because there are students enrolled in it.", "Delete Not Allowed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            DialogResult confirmResult = MessageBox.Show($"Are you sure to delete the course '{selectedCourse.Name}'?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (confirmResult == DialogResult.Yes)
+            {
+                try
+                {
+                    factory.DeleteCourse(selectedCourse.ID_course);
+                    MessageBox.Show("Course deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadFacultyUI(selectedFaculty.ID_faculty);
+                    txtCourseName.Clear();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error deleting course: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
         }
     }
 }

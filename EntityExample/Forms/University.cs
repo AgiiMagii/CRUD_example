@@ -1,4 +1,5 @@
 ﻿using EntityExample.Forms;
+using EntityExample.Lib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,8 +17,17 @@ namespace EntityExample
         public fm_University()
         {
             InitializeComponent();
+            StyleHelper.ApplyFormStyle(this);
+            foreach (Control control in this.Controls)
+            {
+                if (control is Button button)
+                {
+                    StyleHelper.ApplyButtonStyle(button);
+                }
+            }
+            StyleHelper.ApplyFlowLayoutPanelStyle(flowLayoutPanel1);
         }
-        private void picToStudents_Click(object sender, EventArgs e)
+        private void butToStudents_Click(object sender, EventArgs e)
         {
             fm_Student studentForm = new fm_Student(this);
             studentForm.Show();
@@ -25,7 +35,7 @@ namespace EntityExample
             studentForm.Size = this.Size;
             this.Hide();
         }
-        private void picToLectors_Click(object sender, EventArgs e)
+        private void butToLectors_Click(object sender, EventArgs e)
         {
             fm_Lector lectorForm = new fm_Lector(this);
             lectorForm.Show();
@@ -33,7 +43,7 @@ namespace EntityExample
             lectorForm.Size = this.Size;
             this.Hide();
         }
-        private void picToFaculties_Click_1(object sender, EventArgs e)
+        private void butToFaculties_Click(object sender, EventArgs e)
         {
             fm_FacultyCourse facultyCourseForm = new fm_FacultyCourse(this);
             facultyCourseForm.Show();

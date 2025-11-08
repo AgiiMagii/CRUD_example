@@ -15,6 +15,7 @@
     <EntitySetMapping Name="Course">
       <EntityTypeMapping TypeName="UniversityExampleModel.Course">
         <MappingFragment StoreEntitySet="Course">
+          <ScalarProperty Name="DefaultScholarship" ColumnName="DefaultScholarship" />
           <ScalarProperty Name="ID_course" ColumnName="ID_course" />
           <ScalarProperty Name="ID_faculty" ColumnName="ID_faculty" />
           <ScalarProperty Name="Name" ColumnName="Name" />

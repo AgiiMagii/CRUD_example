@@ -77,6 +77,14 @@ namespace EntityExample.Lib
             }
             return true;
         }
+        public bool IsCourseNameUnique(string name, List<Course> existingCourses)
+        {
+            if (existingCourses.Any(c => c.Name.Equals(name, StringComparison.OrdinalIgnoreCase)))
+            {
+                return false;
+            }
+            return true;
+        }
         public List<string> LectorValidation(Lector lector)
         {
             List<string> errors = new List<string>();
@@ -132,12 +140,20 @@ namespace EntityExample.Lib
             }
             return errors;
         }
-        public List<string> CourseValidation(Course course)
+        public List<string> CourseValidation(Course course, List<Course> existingCourses)
         {
             List<string> errors = new List<string>();
             if (course.Name.Length < 2 || course.Name.Length > 100)
             {
                 errors.Add("Course name must be between 2 and 100 characters.");
+            }
+            else if (string.IsNullOrWhiteSpace(course.Name))
+            {
+                errors.Add("Course name is required.");
+            }
+            else if (!IsCourseNameUnique(course.Name, existingCourses))
+            {
+                errors.Add("Course name must be unique within the faculty.");
             }
             return errors;
         }

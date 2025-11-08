@@ -17,6 +17,7 @@
     <Property Name="ID_course" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ID_faculty" Type="bigint" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="DefaultScholarship" Type="decimal" Precision="4" Scale="0" />
   </EntityType>
   <EntityType Name="Faculty">
     <Key>

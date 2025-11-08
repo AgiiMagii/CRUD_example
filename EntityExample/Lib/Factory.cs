@@ -63,6 +63,10 @@ namespace EntityExample.Lib
         {
             return repository.GetEntities<Course>().Where(c => c.ID_faculty == facultyId).ToList();
         }
+        public List<Student> GetStudentsByCourseID(long courseId)
+        {
+            return repository.GetEntities<Student>().Where(s => s.ID_course == courseId).ToList();
+        }
         public List<GetStudentsByFaculty_Result> GetStudentsByFaculty(string faculty)
         {
             try
@@ -253,12 +257,28 @@ namespace EntityExample.Lib
             repository.DeleteEntity(addressEntity);
             return true;
         }
+        public bool DeleteCourse(long id)
+        {
+            Course courseEntity = repository.GetEntities<Course>().FirstOrDefault(c => c.ID_course == id);
+            if (courseEntity == null)
+            {
+                return false;
+            }
+            repository.DeleteEntity(courseEntity);
+            return true;
+        }
         public bool AddScholarship(long courseID, decimal amount)
         {
             try
             {
                 using (var context = new UniversityExampleEntities())
                 {
+                    // 1️⃣ Atjauno course default
+                    context.Course
+                        .Where(c => c.ID_course == courseID)
+                        .Update(c => new Course { DefaultScholarship = amount });
+
+                    // 2️⃣ Atjauno studentiem, kuriem nav īpašā procenta
                     context.Student
                         .Where(s => s.ID_course == courseID)
                         .Update(s => new Student { Scholarship = amount });

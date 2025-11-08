@@ -17,10 +17,10 @@ C:\Users\User\Documents\C_sharp\Darbini\EntityExample\EntityExample\obj\Debug\En
 C:\Users\User\Documents\C_sharp\Darbini\EntityExample\EntityExample\obj\Debug\EntityExample.exe
 C:\Users\User\Documents\C_sharp\Darbini\EntityExample\EntityExample\obj\Debug\EntityExample.pdb
 C:\Users\User\Documents\C_sharp\Darbini\EntityExample\EntityExample\obj\Debug\EntityExample.Forms.fm_FacultyCourse.resources
-C:\Users\User\Documents\C_sharp\Darbini\EntityExample\EntityExample\obj\Debug\EntityExample.exe.config
 C:\Users\User\Documents\C_sharp\Darbini\EntityExample\EntityExample\bin\Debug\Z.EntityFramework.Extensions.dll
 C:\Users\User\Documents\C_sharp\Darbini\EntityExample\EntityExample\bin\Debug\Z.EntityFramework.Plus.EF6.dll
 C:\Users\User\Documents\C_sharp\Darbini\EntityExample\EntityExample\bin\Debug\Z.Expressions.Eval.dll
 C:\Users\User\Documents\C_sharp\Darbini\EntityExample\EntityExample\bin\Debug\Z.EntityFramework.Extensions.xml
 C:\Users\User\Documents\C_sharp\Darbini\EntityExample\EntityExample\bin\Debug\Z.EntityFramework.Plus.EF6.xml
 C:\Users\User\Documents\C_sharp\Darbini\EntityExample\EntityExample\bin\Debug\Z.Expressions.Eval.xml
+C:\Users\User\Documents\C_sharp\Darbini\EntityExample\EntityExample\obj\Debug\EntityExample.exe.config

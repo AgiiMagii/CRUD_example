@@ -3,24 +3,36 @@
   "WorkspaceRootPath": "C:\\Users\\User\\Documents\\C_sharp\\Darbini\\EntityExample\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{35E784C9-1C84-4B1D-AF78-6DE9591F64AE}|EntityExample\\EntityExample.csproj|c:\\users\\user\\documents\\c_sharp\\darbini\\entityexample\\entityexample\\forms\\facultycourse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{35E784C9-1C84-4B1D-AF78-6DE9591F64AE}|EntityExample\\EntityExample.csproj|solutionrelative:entityexample\\forms\\facultycourse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{35E784C9-1C84-4B1D-AF78-6DE9591F64AE}|EntityExample\\EntityExample.csproj|c:\\users\\user\\documents\\c_sharp\\darbini\\entityexample\\entityexample\\forms\\facultycourse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{35E784C9-1C84-4B1D-AF78-6DE9591F64AE}|EntityExample\\EntityExample.csproj|solutionrelative:entityexample\\forms\\facultycourse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{35E784C9-1C84-4B1D-AF78-6DE9591F64AE}|EntityExample\\EntityExample.csproj|c:\\users\\user\\documents\\c_sharp\\darbini\\entityexample\\entityexample\\forms\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{35E784C9-1C84-4B1D-AF78-6DE9591F64AE}|EntityExample\\EntityExample.csproj|solutionrelative:entityexample\\forms\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{35E784C9-1C84-4B1D-AF78-6DE9591F64AE}|EntityExample\\EntityExample.csproj|C:\\Users\\User\\Documents\\C_sharp\\Darbini\\EntityExample\\entityexample\\lib\\factory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{35E784C9-1C84-4B1D-AF78-6DE9591F64AE}|EntityExample\\EntityExample.csproj|C:\\Users\\User\\Documents\\C_sharp\\Darbini\\EntityExample\\entityexample\\forms\\university.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35E784C9-1C84-4B1D-AF78-6DE9591F64AE}|EntityExample\\EntityExample.csproj|solutionrelative:entityexample\\forms\\university.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35E784C9-1C84-4B1D-AF78-6DE9591F64AE}|EntityExample\\EntityExample.csproj|C:\\Users\\User\\Documents\\C_sharp\\Darbini\\EntityExample\\entityexample\\forms\\facultycourse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35E784C9-1C84-4B1D-AF78-6DE9591F64AE}|EntityExample\\EntityExample.csproj|solutionrelative:entityexample\\forms\\facultycourse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35E784C9-1C84-4B1D-AF78-6DE9591F64AE}|EntityExample\\EntityExample.csproj|c:\\users\\user\\documents\\c_sharp\\darbini\\entityexample\\entityexample\\lib\\validation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35E784C9-1C84-4B1D-AF78-6DE9591F64AE}|EntityExample\\EntityExample.csproj|solutionrelative:entityexample\\lib\\validation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35E784C9-1C84-4B1D-AF78-6DE9591F64AE}|EntityExample\\EntityExample.csproj|c:\\users\\user\\documents\\c_sharp\\darbini\\entityexample\\entityexample\\lib\\stylehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35E784C9-1C84-4B1D-AF78-6DE9591F64AE}|EntityExample\\EntityExample.csproj|solutionrelative:entityexample\\lib\\stylehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35E784C9-1C84-4B1D-AF78-6DE9591F64AE}|EntityExample\\EntityExample.csproj|C:\\Users\\User\\Documents\\C_sharp\\Darbini\\EntityExample\\entityexample\\forms\\facultycourse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{35E784C9-1C84-4B1D-AF78-6DE9591F64AE}|EntityExample\\EntityExample.csproj|solutionrelative:entityexample\\forms\\facultycourse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35E784C9-1C84-4B1D-AF78-6DE9591F64AE}|EntityExample\\EntityExample.csproj|c:\\users\\user\\documents\\c_sharp\\darbini\\entityexample\\entityexample\\lib\\factory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{35E784C9-1C84-4B1D-AF78-6DE9591F64AE}|EntityExample\\EntityExample.csproj|solutionrelative:entityexample\\lib\\factory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{35E784C9-1C84-4B1D-AF78-6DE9591F64AE}|EntityExample\\EntityExample.csproj|C:\\Users\\User\\Documents\\C_sharp\\Darbini\\EntityExample\\entityexample\\lib\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{35E784C9-1C84-4B1D-AF78-6DE9591F64AE}|EntityExample\\EntityExample.csproj|solutionrelative:entityexample\\lib\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{35E784C9-1C84-4B1D-AF78-6DE9591F64AE}|EntityExample\\EntityExample.csproj|C:\\Users\\User\\Documents\\C_sharp\\Darbini\\EntityExample\\entityexample\\forms\\university.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{35E784C9-1C84-4B1D-AF78-6DE9591F64AE}|EntityExample\\EntityExample.csproj|solutionrelative:entityexample\\forms\\university.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{35E784C9-1C84-4B1D-AF78-6DE9591F64AE}|EntityExample\\EntityExample.csproj|C:\\Users\\User\\Documents\\C_sharp\\Darbini\\EntityExample\\entityexample\\forms\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -34,24 +46,88 @@
       "DocumentGroups": [
         {
           "DockedWidth": 77,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 6,
+              "Title": "Factory.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\C_sharp\\Darbini\\EntityExample\\EntityExample\\Lib\\Factory.cs",
+              "RelativeDocumentMoniker": "EntityExample\\Lib\\Factory.cs",
+              "ToolTip": "C:\\Users\\User\\Documents\\C_sharp\\Darbini\\EntityExample\\EntityExample\\Lib\\Factory.cs",
+              "RelativeToolTip": "EntityExample\\Lib\\Factory.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAAAEEAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-08T05:40:49.61Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Validation.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\C_sharp\\Darbini\\EntityExample\\EntityExample\\Lib\\Validation.cs",
+              "RelativeDocumentMoniker": "EntityExample\\Lib\\Validation.cs",
+              "ToolTip": "C:\\Users\\User\\Documents\\C_sharp\\Darbini\\EntityExample\\EntityExample\\Lib\\Validation.cs",
+              "RelativeToolTip": "EntityExample\\Lib\\Validation.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwKEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-08T05:32:16.553Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "StyleHelper.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\C_sharp\\Darbini\\EntityExample\\EntityExample\\Lib\\StyleHelper.cs",
+              "RelativeDocumentMoniker": "EntityExample\\Lib\\StyleHelper.cs",
+              "ToolTip": "C:\\Users\\User\\Documents\\C_sharp\\Darbini\\EntityExample\\EntityExample\\Lib\\StyleHelper.cs",
+              "RelativeToolTip": "EntityExample\\Lib\\StyleHelper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADEAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-08T02:46:37.804Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "University.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\C_sharp\\Darbini\\EntityExample\\EntityExample\\Forms\\University.cs",
+              "RelativeDocumentMoniker": "EntityExample\\Forms\\University.cs",
+              "ToolTip": "C:\\Users\\User\\Documents\\C_sharp\\Darbini\\EntityExample\\EntityExample\\Forms\\University.cs",
+              "RelativeToolTip": "EntityExample\\Forms\\University.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-06T19:57:46.876Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "University.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\C_sharp\\Darbini\\EntityExample\\EntityExample\\Forms\\University.cs",
+              "RelativeDocumentMoniker": "EntityExample\\Forms\\University.cs",
+              "ToolTip": "C:\\Users\\User\\Documents\\C_sharp\\Darbini\\EntityExample\\EntityExample\\Forms\\University.cs [Design]",
+              "RelativeToolTip": "EntityExample\\Forms\\University.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-06T19:57:42.016Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "FacultyCourse.cs",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\C_sharp\\Darbini\\EntityExample\\EntityExample\\Forms\\FacultyCourse.cs",
               "RelativeDocumentMoniker": "EntityExample\\Forms\\FacultyCourse.cs",
               "ToolTip": "C:\\Users\\User\\Documents\\C_sharp\\Darbini\\EntityExample\\EntityExample\\Forms\\FacultyCourse.cs",
               "RelativeToolTip": "EntityExample\\Forms\\FacultyCourse.cs",
-              "ViewState": "AgIAACIAAAAAAAAAAAAowHoAAABEAAAAAAAAAA==",
+              "ViewState": "AgIAABQAAAAAAAAAAAAQwBAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-06T12:22:13.349Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "FacultyCourse.cs [Design]",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\C_sharp\\Darbini\\EntityExample\\EntityExample\\Forms\\FacultyCourse.cs",
               "RelativeDocumentMoniker": "EntityExample\\Forms\\FacultyCourse.cs",
@@ -63,46 +139,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Repository.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Documents\\C_sharp\\Darbini\\EntityExample\\EntityExample\\Lib\\Repository.cs",
-              "RelativeDocumentMoniker": "EntityExample\\Lib\\Repository.cs",
-              "ToolTip": "C:\\Users\\User\\Documents\\C_sharp\\Darbini\\EntityExample\\EntityExample\\Lib\\Repository.cs",
-              "RelativeToolTip": "EntityExample\\Lib\\Repository.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAD4AAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-05T14:06:10.823Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Factory.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Documents\\C_sharp\\Darbini\\EntityExample\\EntityExample\\Lib\\Factory.cs",
-              "RelativeDocumentMoniker": "EntityExample\\Lib\\Factory.cs",
-              "ToolTip": "C:\\Users\\User\\Documents\\C_sharp\\Darbini\\EntityExample\\EntityExample\\Lib\\Factory.cs",
-              "RelativeToolTip": "EntityExample\\Lib\\Factory.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFkAAAALAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-05T12:11:53.129Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Student.cs",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\C_sharp\\Darbini\\EntityExample\\EntityExample\\Forms\\Student.cs",
               "RelativeDocumentMoniker": "EntityExample\\Forms\\Student.cs",
               "ToolTip": "C:\\Users\\User\\Documents\\C_sharp\\Darbini\\EntityExample\\EntityExample\\Forms\\Student.cs",
               "RelativeToolTip": "EntityExample\\Forms\\Student.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKUAAABYAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAACFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-27T16:56:51.104Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "Student.cs [Design]",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\C_sharp\\Darbini\\EntityExample\\EntityExample\\Forms\\Student.cs",
               "RelativeDocumentMoniker": "EntityExample\\Forms\\Student.cs",

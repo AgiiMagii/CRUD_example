@@ -14,11 +14,13 @@ namespace EntityExample.Forms
 {
     public partial class fm_Student : Form
     {
+        // TODO: Add multiselect update functionality in case if course is changed for multiple students or to delete, if course ends
+
         Factory factory = new Factory();
         Helper helper = new Helper();
         Validation validation = new Validation();
         private int pageNr = 1;
-        private int pageSize = 5;
+        private int pageSize = 30;
         private string searchText = string.Empty;
         private string selectedFacultyName = string.Empty;
         private List<StudentView> students = new List<StudentView>();
@@ -28,18 +30,27 @@ namespace EntityExample.Forms
         {
             InitializeComponent();
             _universityForm = universityForm;
+            StyleHelper.ApplyGridStyle(grid_Students);
+            SetButtonStyle(this);
+        }
+        private void SetButtonStyle(Control parent)
+        {
+            foreach (Control control in parent.Controls)
+            {
+                if (control is Button button)
+                {
+                    StyleHelper.ApplyButtonStyle(button);
+                }
+                if (control.HasChildren)
+                {
+                    SetButtonStyle(control);
+                }
+            }
         }
         private void fm_Student_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (!_universityForm.Visible)
                 Application.Exit();
-        }
-        private void picB_ToUniversity(object sender, EventArgs e)
-        {
-            _universityForm.Location = this.Location;
-            _universityForm.Size = this.Size;
-            _universityForm.Show();
-            this.Close();
         }
         private void fm_Student_Load(object sender, EventArgs e)
         {
@@ -93,17 +104,17 @@ namespace EntityExample.Forms
                 Surname = textSSurn.Text,
                 BirthYear = datePickStud.Value,
                 Gender = comboStGender.SelectedItem.ToString(),
-                ID_course = (long?)comboCourse.SelectedValue
+                ID_course = (long?)comboCourse.SelectedValue,
+                Scholarship = comboCourse.SelectedValue != null ? factory.GetCourseById(Convert.ToInt64(comboCourse.SelectedValue))?.DefaultScholarship : null
             };
             List<string> errors = validation.StudentValidation(student);
-            if (errors.Count == 0)
-            {
-                student = factory.RegStudent(student);
-            }
-            else
+            if (errors.Count > 0)
             {
                 MessageBox.Show(string.Join(Environment.NewLine, errors), "Validation Errors", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
+            student = factory.RegStudent(student);
+            MessageBox.Show($"Student {student.Name} {student.Surname} registered successfully with ID {student.ID_student}.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             students = factory.GetStudents();
             helper.ReloadGrid(grid_Students, helper.Paging(students, pageNr, pageSize));
             helper.ClearForm(Controls);
@@ -187,13 +198,21 @@ namespace EntityExample.Forms
                     s.Name.ToLower().Contains(searchText.ToLower()) ||
                     s.Surname.ToLower().Contains(searchText.ToLower()) ||
                     s.Gender.ToLower().Contains(searchText.ToLower()) ||
-                    (s.CourseName != null && s.CourseName.ToLower().Contains(searchText.ToLower()))
+                    s.CourseName != null && s.CourseName.ToLower().Contains(searchText.ToLower()) ||
+                    s.BirthYear.ToString().Contains(searchText.ToLower())
                 );
             }
             filteredStudents = query.ToList();
             pageNr = 1;
             Paging();
             helper.ReloadGrid(grid_Students, helper.Paging(filteredStudents, pageNr, pageSize));
+        }
+        private void buttBack_Click(object sender, EventArgs e)
+        {
+            _universityForm.Location = this.Location;
+            _universityForm.Size = this.Size;
+            _universityForm.Show();
+            this.Close();
         }
     }
 }
