@@ -23,4 +23,5 @@ C:\Users\User\Documents\C_sharp\Darbini\EntityExample\EntityExample\bin\Debug\Z.
 C:\Users\User\Documents\C_sharp\Darbini\EntityExample\EntityExample\bin\Debug\Z.EntityFramework.Extensions.xml
 C:\Users\User\Documents\C_sharp\Darbini\EntityExample\EntityExample\bin\Debug\Z.EntityFramework.Plus.EF6.xml
 C:\Users\User\Documents\C_sharp\Darbini\EntityExample\EntityExample\bin\Debug\Z.Expressions.Eval.xml
+C:\Users\User\Documents\C_sharp\Darbini\EntityExample\EntityExample\bin\Debug\MyExcelLibrary.dll
 C:\Users\User\Documents\C_sharp\Darbini\EntityExample\EntityExample\obj\Debug\EntityExample.exe.config

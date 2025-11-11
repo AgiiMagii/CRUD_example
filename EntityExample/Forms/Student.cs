@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MyExcelLibrary;
+using MyExcelLibrary.Lib;
 
 namespace EntityExample.Forms
 {
@@ -19,6 +21,8 @@ namespace EntityExample.Forms
         Factory factory = new Factory();
         Helper helper = new Helper();
         Validation validation = new Validation();
+        Excel excel = new Excel();
+
         private int pageNr = 1;
         private int pageSize = 30;
         private string searchText = string.Empty;
@@ -55,6 +59,8 @@ namespace EntityExample.Forms
         private void fm_Student_Load(object sender, EventArgs e)
         {
             students = factory.GetStudents();
+            
+            
             helper.ReloadGrid(grid_Students, helper.Paging(students, pageNr, pageSize));
 
             LoadComboCourses();
@@ -74,7 +80,7 @@ namespace EntityExample.Forms
         }
         private void LoadComboGender()
         {
-            comboStGender.DataSource = Enum.GetValues(typeof(Enums.Gender));
+            comboStGender.DataSource = Enum.GetValues(typeof(Lib.Enums.Gender));
             comboStGender.SelectedIndex = -1;
         }
         private void buttPageRight_Click(object sender, EventArgs e)
@@ -131,7 +137,7 @@ namespace EntityExample.Forms
                     text_SName.Text = student.Name;
                     textSSurn.Text = student.Surname;
                     datePickStud.Value = student.BirthYear ?? DateTime.Now;
-                    comboStGender.SelectedItem = Enum.Parse(typeof(Enums.Gender), student.Gender);
+                    comboStGender.SelectedItem = Enum.Parse(typeof(Lib.Enums.Gender), student.Gender);
                     comboCourse.SelectedValue = student?.ID_course;
                 }
             }
@@ -213,6 +219,70 @@ namespace EntityExample.Forms
             _universityForm.Size = this.Size;
             _universityForm.Show();
             this.Close();
+        }
+        private void buttSaveToXls_Click(object sender, EventArgs e)
+        {
+            List<StudentView> listObject = filteredStudents.Count > 0 ? filteredStudents : students;
+
+            if (grid_Students.Rows.Count == 0)
+            {
+                MessageBox.Show("No student data available to export.", "Export Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                Filter = "Excel Files (*.xlsx)|*.xlsx",
+                Title = "Save Students to Excel"
+            };
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                XLSConfig<StudentView> xLSConfig = new XLSConfig<StudentView>
+                {
+                    DateFormat = "dd.MM.yyyy",
+                    Items = listObject,
+                    FileFullPath = saveFileDialog.FileName,
+                    TableName = "Students",
+                    WorkSheetName = "Students",
+                    TableStyles = MyExcelLibrary.Lib.Enums.TableStyles.TableStyleDark10,
+                    Author = "Aggy"
+                };
+                excel.SaveToExcel(xLSConfig);
+            }
+        }
+
+        private void buttGetFileContent_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Filter = "Excel Files (*.xlsx)|*.xlsx",
+                Title = "Open Excel File"
+            };
+
+            if (openFileDialog.ShowDialog() != DialogResult.OK)
+                return;
+
+            string filePath = openFileDialog.FileName;
+            List<StudentView> studentsFromFile;
+            try
+            {
+                studentsFromFile = excel.LoadFromExcel<StudentView>(filePath) ?? new List<StudentView>();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Failed to read Excel file:{Environment.NewLine}{ex.Message}", "File Read Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            studentsFromFile = studentsFromFile
+                .OrderBy(s => s?.Name ?? string.Empty)
+                .ThenBy(s => s?.Surname ?? string.Empty)
+                .ToList();
+            students = studentsFromFile;
+            filteredStudents = new List<StudentView>();
+
+            pageNr = 1;
+            Paging();
+
+            helper.ReloadGrid(grid_Students, helper.Paging(students, pageNr, pageSize));
         }
     }
 }

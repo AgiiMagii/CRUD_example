@@ -56,6 +56,8 @@
             this.cb_filterByFaculty = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.buttBack = new System.Windows.Forms.Button();
+            this.buttSaveToXls = new System.Windows.Forms.Button();
+            this.buttGetFileContent = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grid_Students)).BeginInit();
             this.groupStudentReg.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -79,7 +81,7 @@
             this.buttPageRight.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.buttPageRight.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttPageRight.Enabled = false;
-            this.buttPageRight.Location = new System.Drawing.Point(405, 409);
+            this.buttPageRight.Location = new System.Drawing.Point(439, 410);
             this.buttPageRight.Name = "buttPageRight";
             this.buttPageRight.Size = new System.Drawing.Size(95, 23);
             this.buttPageRight.TabIndex = 2;
@@ -92,7 +94,7 @@
             this.buttPageLeft.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.buttPageLeft.BackColor = System.Drawing.Color.WhiteSmoke;
             this.buttPageLeft.Enabled = false;
-            this.buttPageLeft.Location = new System.Drawing.Point(262, 409);
+            this.buttPageLeft.Location = new System.Drawing.Point(321, 410);
             this.buttPageLeft.Name = "buttPageLeft";
             this.buttPageLeft.Size = new System.Drawing.Size(95, 23);
             this.buttPageLeft.TabIndex = 3;
@@ -104,7 +106,7 @@
             // 
             this.labelShowing.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.labelShowing.AutoSize = true;
-            this.labelShowing.Location = new System.Drawing.Point(286, 393);
+            this.labelShowing.Location = new System.Drawing.Point(333, 394);
             this.labelShowing.Name = "labelShowing";
             this.labelShowing.Size = new System.Drawing.Size(13, 13);
             this.labelShowing.TabIndex = 4;
@@ -114,7 +116,7 @@
             // 
             this.labelNext.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.labelNext.AutoSize = true;
-            this.labelNext.Location = new System.Drawing.Point(429, 393);
+            this.labelNext.Location = new System.Drawing.Point(455, 394);
             this.labelNext.Name = "labelNext";
             this.labelNext.Size = new System.Drawing.Size(13, 13);
             this.labelNext.TabIndex = 5;
@@ -124,7 +126,7 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(376, 393);
+            this.label1.Location = new System.Drawing.Point(420, 393);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(19, 13);
             this.label1.TabIndex = 6;
@@ -335,11 +337,32 @@
             this.buttBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttBack.Location = new System.Drawing.Point(12, 409);
             this.buttBack.Name = "buttBack";
-            this.buttBack.Size = new System.Drawing.Size(118, 23);
+            this.buttBack.Size = new System.Drawing.Size(57, 23);
             this.buttBack.TabIndex = 24;
             this.buttBack.Text = "Back";
             this.buttBack.UseVisualStyleBackColor = true;
             this.buttBack.Click += new System.EventHandler(this.buttBack_Click);
+            // 
+            // buttSaveToXls
+            // 
+            this.buttSaveToXls.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttSaveToXls.Location = new System.Drawing.Point(89, 409);
+            this.buttSaveToXls.Name = "buttSaveToXls";
+            this.buttSaveToXls.Size = new System.Drawing.Size(101, 23);
+            this.buttSaveToXls.TabIndex = 25;
+            this.buttSaveToXls.Text = "Save to Excel";
+            this.buttSaveToXls.UseVisualStyleBackColor = true;
+            this.buttSaveToXls.Click += new System.EventHandler(this.buttSaveToXls_Click);
+            // 
+            // buttGetFileContent
+            // 
+            this.buttGetFileContent.Location = new System.Drawing.Point(196, 409);
+            this.buttGetFileContent.Name = "buttGetFileContent";
+            this.buttGetFileContent.Size = new System.Drawing.Size(101, 23);
+            this.buttGetFileContent.TabIndex = 26;
+            this.buttGetFileContent.Text = "Open from File";
+            this.buttGetFileContent.UseVisualStyleBackColor = true;
+            this.buttGetFileContent.Click += new System.EventHandler(this.buttGetFileContent_Click);
             // 
             // fm_Student
             // 
@@ -347,6 +370,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttGetFileContent);
+            this.Controls.Add(this.buttSaveToXls);
             this.Controls.Add(this.buttBack);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.cb_filterByFaculty);
@@ -401,5 +426,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button buttBack;
+        private System.Windows.Forms.Button buttSaveToXls;
+        private System.Windows.Forms.Button buttGetFileContent;
     }
 }
